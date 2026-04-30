@@ -224,7 +224,9 @@ async function loadPrices() {
     if (!GOOGLE_SHEET_CSV_URL || GOOGLE_SHEET_CSV_URL === '') return; // Si no hay enlace, usar precios por defecto del HTML
 
     try {
-        const response = await fetch(GOOGLE_SHEET_CSV_URL);
+        // Añadimos un parámetro de tiempo para evitar que el navegador guarde en caché el precio viejo
+        const urlPura = GOOGLE_SHEET_CSV_URL + '&t=' + new Date().getTime();
+        const response = await fetch(urlPura);
         if (!response.ok) throw new Error('No se pudo cargar el CSV');
         
         const data = await response.text();
