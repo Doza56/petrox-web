@@ -159,3 +159,59 @@ if (hamburger && navLinks) {
         }
     });
 }
+
+// 6. MANEJO DE ENVÍO DE FORMULARIO DE CONTACTO POR AJAX (FETCH API)
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+    contactForm.addEventListener('submit', async function(e) {
+        e.preventDefault(); // Evita que la página se recargue o redirija
+        
+        const formStatus = document.getElementById('formStatus');
+        const btnText = document.getElementById('btnText');
+        const btnSpinner = document.getElementById('btnSpinner');
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        
+        // Mostrar estado de carga
+        btnText.textContent = 'Enviando...';
+        btnSpinner.style.display = 'inline-block';
+        submitBtn.disabled = true;
+        formStatus.style.display = 'none';
+
+        try {
+            const formData = new FormData(contactForm);
+            
+            // Usando FormSubmit con Fetch
+            const response = await fetch(contactForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                // Éxito
+                formStatus.textContent = '✅ ¡Tu mensaje ha sido enviado con éxito! Nos pondremos en contacto pronto.';
+                formStatus.style.color = '#25d366'; // Verde WhatsApp
+                formStatus.style.backgroundColor = 'rgba(37, 211, 102, 0.1)';
+                formStatus.style.border = '1px solid rgba(37, 211, 102, 0.3)';
+                formStatus.style.display = 'block';
+                contactForm.reset(); // Limpiar el formulario
+            } else {
+                throw new Error('Error en el servidor al enviar');
+            }
+        } catch (error) {
+            // Error
+            formStatus.textContent = '❌ Hubo un problema al enviar tu mensaje. Por favor, intenta de nuevo o contáctanos por WhatsApp.';
+            formStatus.style.color = '#ef4444'; // Rojo
+            formStatus.style.backgroundColor = 'rgba(239, 68, 68, 0.1)';
+            formStatus.style.border = '1px solid rgba(239, 68, 68, 0.3)';
+            formStatus.style.display = 'block';
+        } finally {
+            // Restaurar el botón
+            btnText.textContent = 'Enviar Mensaje';
+            btnSpinner.style.display = 'none';
+            submitBtn.disabled = false;
+        }
+    });
+}

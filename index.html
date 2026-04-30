@@ -17,6 +17,30 @@
 
     <!-- FontAwesome para los iconos -->
     <script src="https://kit.fontawesome.com/e674bba739.js" crossorigin="anonymous" defer></script>
+
+    <!-- Datos Estructurados SEO Local -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "GasStation",
+      "name": "Estación de Servicios Petrox San Sebastián",
+      "image": "https://raw.githubusercontent.com/Doza56/petrox-web/main/img/logo.png",
+      "telephone": "(064) 399 548",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Av. Palian Nro. 1165",
+        "addressLocality": "Huancayo",
+        "addressRegion": "Junín",
+        "addressCountry": "PE"
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "00:00",
+        "closes": "23:59"
+      }
+    }
+    </script>
 </head>
 
 <body>
@@ -51,7 +75,7 @@
                 <li><a href="contacto.html">Contacto</a></li>
             </ul>
         </nav>
-        <div class="hamburger" id="hamburger">
+        <div class="hamburger" id="hamburger" aria-label="Abrir menú de navegación" role="button" tabindex="0">
             <i class="fas fa-bars"></i>
         </div>
         <a href="https://wa.link/5iihkf" target="_blank" class="btn-primary"
@@ -186,7 +210,7 @@
         <!-- 5. NOSOTROS (MOVIDO AQUÍ) -->
         <section id="about">
             <div class="about-img">
-                <img src="img/per.jpeg" alt="Instalaciones">
+                <img src="img/per.jpeg" alt="Instalaciones" loading="lazy">
             </div>
             <div class="about-text">
                 <h2>Nuestra Historia</h2>
@@ -398,11 +422,11 @@
                     <p><i class="fas fa-envelope"></i> elyprimax@gmail.com</p>
                     <p><i class="fas fa-id-card"></i> RUC: 20568647417</p>
                     <div class="social-links" style="margin-top: 1rem;">
-                        <a href="https://www.facebook.com/share/1SmZtY4T42/" target="_blank"><i
+                        <a href="https://www.facebook.com/share/1SmZtY4T42/" target="_blank" aria-label="Síguenos en Facebook"><i
                                 class="fab fa-facebook"></i></a>
                         <a href="https://www.instagram.com/est_petrox_san_sebastian_hyo?igsh=MWlkM2JyZW1tazg5dQ=="
-                            target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.link/5iihkf" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                            target="_blank" aria-label="Síguenos en Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.link/5iihkf" target="_blank" aria-label="Contáctanos por WhatsApp"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
             </div>
@@ -413,7 +437,7 @@
         </div>
     </footer>
 
-    <a href="https://wa.link/5iihkf" target="_blank" class="whatsapp-float">
+    <a href="https://wa.link/5iihkf" target="_blank" class="whatsapp-float" aria-label="Chatear por WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 

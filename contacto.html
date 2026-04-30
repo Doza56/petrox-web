@@ -140,7 +140,10 @@
 			</div>
 
 			<!-- Columna Derecha: Formulario de envío -->
-			<form class="contact-form" action="https://formsubmit.co/elyprimax@gmail.com" method="POST">
+			<form id="contactForm" class="contact-form" action="https://formsubmit.co/elyprimax@gmail.com" method="POST">
+				<!-- Input oculto para desactivar captcha de FormSubmit si se usa por API (opcional pero ayuda) -->
+				<input type="hidden" name="_captcha" value="false">
+				
 				<div class="grid" style="grid-template-columns: 1fr 1fr; gap: 1rem;">
 					<div class="form-group">
 						<label>Nombre</label>
@@ -160,12 +163,18 @@
 					<textarea name="mensaje" rows="4" placeholder="Tu mensaje aquí..." required></textarea>
 				</div>
 				<!-- Botón de envío -->
-				<button type="submit" class="btn-primary" style="border: none; cursor: pointer; width: 100%;">Enviar
-					Mensaje</button>
+				<button type="submit" class="btn-primary" style="border: none; cursor: pointer; width: 100%; position: relative;">
+					<span id="btnText">Enviar Mensaje</span>
+					<i id="btnSpinner" class="fas fa-spinner fa-spin" style="display: none; margin-left: 10px;"></i>
+				</button>
+				
+				<!-- Mensaje de estado oculto por defecto -->
+				<div id="formStatus" style="display: none; padding: 1rem; border-radius: 12px; text-align: center; font-weight: 600; margin-top: 1rem;"></div>
 			</form>
 
 		</div>
 	</div>
+	<script src="script.js"></script>
 </body>
 
 </html>
