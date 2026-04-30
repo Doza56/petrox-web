@@ -215,3 +215,46 @@ if (contactForm) {
         }
     });
 }
+
+// 7. CARGA DE PRECIOS DESDE GOOGLE SHEETS
+// Tu clienta debe publicar su Google Sheet como CSV y pegar el enlace aquí dentro de las comillas:
+const GOOGLE_SHEET_CSV_URL = ''; // EJEMPLO: 'https://docs.google.com/spreadsheets/d/e/2PACX-.../pub?output=csv'
+
+async function loadPrices() {
+    if (!GOOGLE_SHEET_CSV_URL || GOOGLE_SHEET_CSV_URL === '') return; // Si no hay enlace, usar precios por defecto del HTML
+
+    try {
+        const response = await fetch(GOOGLE_SHEET_CSV_URL);
+        if (!response.ok) throw new Error('No se pudo cargar el CSV');
+        
+        const data = await response.text();
+        const rows = data.split('\n');
+        
+        // Asumimos que la fila 1 (índice 0) son los títulos
+        for (let i = 1; i < rows.length; i++) {
+            const cols = rows[i].split(',');
+            if (cols.length >= 2) {
+                const combustible = cols[0].trim().toLowerCase();
+                const precio = parseFloat(cols[1].trim()).toFixed(2);
+                
+                if (combustible.includes('regular') && document.getElementById('price-regular')) {
+                    document.getElementById('price-regular').textContent = precio;
+                }
+                else if (combustible.includes('premium') && document.getElementById('price-premium')) {
+                    document.getElementById('price-premium').textContent = precio;
+                }
+                else if (combustible.includes('diesel') && document.getElementById('price-diesel')) {
+                    document.getElementById('price-diesel').textContent = precio;
+                }
+                else if (combustible.includes('glp') && document.getElementById('price-glp')) {
+                    document.getElementById('price-glp').textContent = precio;
+                }
+            }
+        }
+    } catch (error) {
+        console.error('Error al cargar los precios desde Google Sheets:', error);
+    }
+}
+
+// Llamar a la función al cargar la página
+document.addEventListener('DOMContentLoaded', loadPrices);
