@@ -218,7 +218,7 @@ if (contactForm) {
 
 // 7. CARGA DE PRECIOS DESDE GOOGLE SHEETS
 // Tu clienta debe publicar su Google Sheet como CSV y pegar el enlace aquí dentro de las comillas:
-const GOOGLE_SHEET_CSV_URL = ''; // EJEMPLO: 'https://docs.google.com/spreadsheets/d/e/2PACX-.../pub?output=csv'
+const GOOGLE_SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRb7Kq96nJhPkVBaredYV2CkPCpKKlkIyXmOio0JOL5DCQZHvIXPrAuYIvWdepbcsMKzmyywYEMn75G/pub?output=csv';
 
 async function loadPrices() {
     if (!GOOGLE_SHEET_CSV_URL || GOOGLE_SHEET_CSV_URL === '') return; // Si no hay enlace, usar precios por defecto del HTML
