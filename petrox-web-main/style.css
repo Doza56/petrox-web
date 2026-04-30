@@ -1,0 +1,804 @@
+/* 
+================================================================
+ESTACIÓN DE SERVICIOS PETROX "SAN SEBASTIAN" - HOJA DE ESTILOS
+================================================================
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+
+/* ----------------------------------------------------------------
+   1. VARIABLES Y CONFIGURACIÓN GLOBAL
+   ---------------------------------------------------------------- */
+:root {
+    --primary: #ff5f00;
+    /* Naranja Primax PRINCIPAL */
+    --primary-hover: #e65600;
+    /* Naranja más oscuro para hover */
+    --bg-dark: #0a0a0b;
+    /* Fondo oscuro de la web */
+    --bg-card: rgba(255, 255, 255, 0.03);
+    /* Fondo de tarjetas */
+    --glass-bg: rgba(15, 15, 18, 0.7);
+    /* Efecto cristal */
+    --glass-border: rgba(255, 255, 255, 0.1);
+    /* Bordes sutiles */
+    --text-main: #f8fafc;
+    /* Color de texto principal */
+    --text-dim: #94a3b8;
+    /* Color de texto secundario */
+    --accent: #38bdf8;
+    /* Color de acento azul */
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Animación suave */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+}
+
+/* ----------------------------------------------------------------
+   2. ENCABEZADO (HEADER) Y NAVEGACIÓN
+   ---------------------------------------------------------------- */
+#header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 1.5rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--glass-border);
+    z-index: 1000;
+}
+
+.logo img {
+    height: 45px;
+    filter: drop-shadow(0 0 8px rgba(255, 95, 0, 0.3));
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+}
+
+/* Dropdown Menu Styles */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    min-width: 200px;
+    border-radius: 12px;
+    padding: 0.5rem 0;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 0.8rem 1.5rem;
+    color: var(--text-dim);
+    font-size: 0.9rem;
+}
+
+.dropdown-content a:hover {
+    background: rgba(255, 95, 0, 0.1);
+    color: var(--primary);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.nav-links a {
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--text-dim);
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+.hamburger {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--text-main);
+    z-index: 1001;
+}
+
+/* ----------------------------------------------------------------
+   3. SECCIÓN HERO (PORTADA)
+   ---------------------------------------------------------------- */
+#hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('img/estacion2.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero-content h1 {
+    font-size: clamp(3rem, 8vw, 5rem);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(to right, #fff, #94a3b8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-tagline {
+    font-size: 1.25rem;
+    color: var(--text-dim);
+    margin-bottom: 2.5rem;
+}
+
+/* ----------------------------------------------------------------
+   4. BOTONES (BUTTONS)
+   ---------------------------------------------------------------- */
+.btn-primary {
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    box-shadow: 0 10px 20px -5px rgba(255, 95, 0, 0.4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    background: var(--primary-hover);
+}
+
+/* ----------------------------------------------------------------
+   5. SECCIÓN DE PRECIOS INTERACTIVOS (CONSOLIDADO)
+   ---------------------------------------------------------------- */
+#prices {
+    padding: 80px 10%;
+    background: #0a0a0b;
+}
+
+.price-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.price-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-left: 5px solid var(--primary);
+    border-radius: 20px;
+    padding: 0;
+    overflow: hidden;
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+    user-select: none;
+}
+
+.price-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 95, 0, 0.05);
+    border-color: rgba(255, 95, 0, 0.3);
+}
+
+.price-card.active {
+    border-color: var(--primary);
+    background: rgba(255, 95, 0, 0.08);
+}
+
+.price-main-info {
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price-card .fuel-name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.price-card .fuel-name i {
+    font-size: 1.5rem;
+    color: var(--primary);
+}
+
+.price-card .fuel-price {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--primary);
+    text-shadow: 0 0 20px rgba(255, 95, 0, 0.2);
+    display: flex;
+    align-items: baseline;
+    gap: 0.3rem;
+    white-space: nowrap;
+}
+
+.price-card .currency {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-dim);
+}
+
+.fuel-description {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.fuel-description-content {
+    padding: 1.5rem 2rem;
+    border-top: 1px solid var(--glass-border);
+}
+
+.fuel-description-content p {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.fuel-description-content .benefit-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.benefit-tag {
+    font-size: 0.7rem;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 4px 10px;
+    border-radius: 50px;
+    color: var(--text-main);
+    border: 1px solid var(--glass-border);
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+/* ----------------------------------------------------------------
+   6. SECCIÓN DE PROMOCIONES
+   ---------------------------------------------------------------- */
+#promotions {
+    padding: 100px 10%;
+    background: linear-gradient(135deg, #0f0f12 0%, #1a1a1f 100%);
+}
+
+.promo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.promo-card {
+    background: var(--bg-card);
+    border: 2px dashed var(--primary);
+    padding: 2.5rem;
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.promo-card::before {
+    content: 'OFERTA';
+    position: absolute;
+    top: 1rem;
+    right: -2.5rem;
+    background: var(--primary);
+    color: white;
+    padding: 0.5rem 3rem;
+    transform: rotate(45deg);
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.promo-card:hover {
+    transform: scale(1.02);
+    background: rgba(255, 95, 0, 0.05);
+}
+
+.promo-card h3 {
+    margin-bottom: 1rem;
+    color: var(--primary);
+}
+
+/* ----------------------------------------------------------------
+   7. SECCIÓN DE SERVICIOS ADICIONALES
+   ---------------------------------------------------------------- */
+#extra-services {
+    padding: 100px 10%;
+    background: var(--bg-dark);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.service-item {
+    background: var(--bg-card);
+    border: 1px solid var(--glass-border);
+    padding: 2rem;
+    border-radius: 20px;
+    text-align: center;
+    transition: var(--transition);
+}
+
+.service-item:hover {
+    background: rgba(255, 95, 0, 0.05);
+    border-color: var(--primary);
+    transform: translateY(-5px);
+}
+
+.service-item i {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+/* ----------------------------------------------------------------
+   7. SECCIÓN NOSOTROS (ABOUT)
+   ---------------------------------------------------------------- */
+#about {
+    padding: 100px 10%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.about-img img {
+    width: 100%;
+    border-radius: 24px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.about-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary);
+}
+
+/* ----------------------------------------------------------------
+   8. TESTIMONIOS (TESTIMONIALS)
+   ---------------------------------------------------------------- */
+#testimonials {
+    padding: 100px 10%;
+}
+
+.testimonial-box {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    padding: 3rem;
+    border-radius: 24px;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* ----------------------------------------------------------------
+   9. PIE DE PÁGINA (FOOTER) Y MAPA
+   ---------------------------------------------------------------- */
+#footer {
+    padding: 80px 10% 40px;
+    background: #050505;
+    border-top: 1px solid var(--glass-border);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 4rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.social-links a {
+    font-size: 1.5rem;
+    color: var(--text-dim);
+}
+
+.social-links a:hover {
+    color: var(--primary);
+}
+
+.map-container {
+    width: 100%;
+    height: 300px;
+    border-radius: 24px;
+    overflow: hidden;
+    margin-top: 2rem;
+    border: 1px solid var(--glass-border);
+}
+
+.map-container iframe {
+    filter: invert(90%) hue-rotate(180deg) brightness(95%) contrast(90%);
+}
+
+/* ----------------------------------------------------------------
+   10. BOTÓN FLOTANTE WHATSAPP
+   ---------------------------------------------------------------- */
+.whatsapp-float {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: #25d366;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+    z-index: 1000;
+    transition: var(--transition);
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    background: #128c7e;
+}
+
+/* ----------------------------------------------------------------
+   11. SECCIÓN DE IDENTIDAD Y VALORES
+   ---------------------------------------------------------------- */
+.identity-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    padding: 60px 10%;
+    background: #0f0f12;
+}
+
+/* Team Page Styles */
+.team-container {
+    padding: 120px 10% 80px;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 3rem;
+    margin-top: 4rem;
+}
+
+.member-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    overflow: hidden;
+    text-align: center;
+    transition: var(--transition);
+}
+
+.member-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary);
+}
+
+.member-img {
+    width: 100%;
+    height: 350px;
+    background: #1a1a1f;
+    /* Placeholder */
+    object-fit: cover;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.member-info {
+    padding: 2rem;
+}
+
+.member-info h3 {
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.member-info span {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.identity-card {
+    padding: 2.5rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    transition: var(--transition);
+}
+
+.identity-card h3 {
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.identity-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-5px);
+}
+
+.values-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.values-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+}
+
+.values-list li::before {
+    content: '→';
+    color: var(--primary);
+}
+
+/* ----------------------------------------------------------------
+   12. ADAPTABILIDAD MÓVIL (RESPONSIVE)
+   ---------------------------------------------------------------- */
+@media (max-width: 968px) {
+    #about {
+        grid-template-columns: 1fr;
+    }
+
+    #header {
+        padding: 1rem 5%;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    #header .btn-primary {
+        display: none;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--glass-bg);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem 0;
+        gap: 1.5rem;
+        border-bottom: 1px solid var(--glass-border);
+        transition: all 0.3s ease-in-out;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+    }
+
+    .nav-links.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    /* Submenú desplegable en móvil */
+    .dropdown-content {
+        position: static;
+        flex-direction: column;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        min-width: auto;
+        gap: 1.5rem;
+        
+        display: none; /* Oculto por defecto */
+        margin-top: 1rem;
+    }
+
+    /* Anular el hover de escritorio en móviles */
+    .dropdown:hover .dropdown-content {
+        display: none;
+        animation: none;
+    }
+
+    /* Mostrar solo cuando tiene la clase activa (incluso si hay hover) */
+    .dropdown.mobile-expanded .dropdown-content,
+    .dropdown.mobile-expanded:hover .dropdown-content {
+        display: flex;
+    }
+
+    .dropdown.mobile-expanded .fa-chevron-down {
+        transform: rotate(180deg);
+    }
+
+    .dropdown .fa-chevron-down {
+        transition: transform 0.3s ease;
+    }
+
+    .hero-content h1 {
+        font-size: 3.5rem;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ----------------------------------------------------------------
+   13. FAQ ACCORDION (PREMIUM REDESIGN)
+   ---------------------------------------------------------------- */
+.faq-container {
+    padding: 100px 10%;
+    background: linear-gradient(180deg, var(--bg-dark) 0%, #0f0f12 100%);
+}
+
+.faq-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.faq-item:hover {
+    border-color: rgba(255, 95, 0, 0.3);
+    background: rgba(255, 95, 0, 0.02);
+}
+
+.faq-item.active {
+    border-color: var(--primary);
+    background: rgba(255, 95, 0, 0.05);
+    box-shadow: 0 15px 35px rgba(255, 95, 0, 0.1);
+}
+
+.faq-header {
+    padding: 1.8rem 2.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-question-box {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.faq-question-box i.topic-icon {
+    width: 45px;
+    height: 45px;
+    background: rgba(255, 95, 0, 0.1);
+    color: var(--primary);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: var(--transition);
+}
+
+.faq-item.active i.topic-icon {
+    background: var(--primary);
+    color: white;
+}
+
+.faq-header h3 {
+    font-size: 1.2rem;
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+.faq-header .toggle-icon {
+    color: var(--text-dim);
+    transition: var(--transition);
+}
+
+.faq-item.active .toggle-icon {
+    transform: rotate(45deg);
+    color: var(--primary);
+}
+
+.faq-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-content p {
+    padding: 0 2.5rem 2rem 6.2rem;
+    /* Alineado con el texto de la pregunta */
+    color: var(--text-dim);
+    line-height: 1.8;
+    font-size: 1rem;
+}

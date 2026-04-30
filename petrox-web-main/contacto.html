@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<!-- Configuración del documento -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Contacto - Petrox San Sebastian</title>
+	<meta name="description" content="Contacta a la Estación de Servicios Petrox San Sebastián. Estamos en Huancayo para atender todas tus dudas sobre combustibles, lubricantes y servicios corporativos.">
+
+	<!-- Enlace a la hoja de estilos principal -->
+	<link rel="stylesheet" href="style.css">
+
+	<!-- Favicon -->
+	<link rel="icon" type="image/png" href="img/logo.png">
+
+	<!-- Iconos de FontAwesome -->
+	<script src="https://kit.fontawesome.com/e674bba739.js" crossorigin="anonymous" defer></script>
+
+	<!-- Estilos específicos para la página de contacto -->
+	<style>
+		.contact-container {
+			min-height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 100px 5%;
+			background: radial-gradient(circle at top right, rgba(255, 95, 0, 0.1), transparent),
+				radial-gradient(circle at bottom left, rgba(56, 189, 248, 0.05), transparent);
+		}
+
+		/* Tarjeta contenedora del formulario */
+		.contact-card {
+			background: var(--glass-bg);
+			backdrop-filter: blur(20px);
+			border: 1px solid var(--glass-border);
+			border-radius: 32px;
+			padding: 3rem;
+			width: 100%;
+			max-width: 900px;
+			display: grid;
+			grid-template-columns: 1fr 1.2fr;
+			gap: 3rem;
+		}
+
+		/* Titulo e información de la izquierda */
+		.contact-info h1 {
+			font-size: 2.5rem;
+			margin-bottom: 1rem;
+			color: var(--primary);
+		}
+
+		/* Estilos del formulario de la derecha */
+		.contact-form {
+			display: flex;
+			flex-direction: column;
+			gap: 1.5rem;
+		}
+
+		.form-group {
+			display: flex;
+			flex-direction: column;
+			gap: 0.5rem;
+		}
+
+		.form-group label {
+			font-size: 0.9rem;
+			color: var(--text-dim);
+		}
+
+		/* Estilos de los inputs y áreas de texto */
+		.form-group input,
+		.form-group textarea {
+			background: rgba(255, 255, 255, 0.05);
+			border: 1px solid var(--glass-border);
+			padding: 1rem;
+			border-radius: 12px;
+			color: white;
+			transition: var(--transition);
+		}
+
+		.form-group input:focus,
+		.form-group textarea:focus {
+			outline: none;
+			border-color: var(--primary);
+			background: rgba(255, 255, 255, 0.08);
+		}
+
+		/* Botón para volver atrás */
+		.back-btn {
+			position: absolute;
+			top: 2rem;
+			left: 2rem;
+			color: var(--text-dim);
+			font-weight: 600;
+		}
+
+		/* Ajustes para móviles */
+		@media (max-width: 768px) {
+			.contact-card {
+				grid-template-columns: 1fr;
+				padding: 2rem;
+			}
+		}
+	</style>
+</head>
+
+<body>
+
+	<!-- Botón de retorno al inicio -->
+	<a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Volver al Inicio</a>
+
+	<div class="contact-container">
+		<!-- Tarjeta de contacto dividida en dos columnas -->
+		<div class="contact-card">
+
+			<!-- Columna Izquierda: Información de contacto -->
+			<div class="contact-info">
+				<h1>Hablemos</h1>
+				<p style="color: var(--text-dim); margin-bottom: 2rem;">Escríbenos y en breve nos pondremos en contacto
+					contigo para atender tus necesidades.</p>
+
+				<div style="display: flex; flex-direction: column; gap: 1.5rem;">
+					<!-- Teléfono -->
+					<div style="display: flex; align-items: center; gap: 1rem;">
+						<i class="fas fa-phone-alt" style="color: var(--primary);"></i>
+						<span>(064) 399 548</span>
+					</div>
+					<!-- Email -->
+					<div style="display: flex; align-items: center; gap: 1rem;">
+						<i class="fas fa-envelope" style="color: var(--primary);"></i>
+						<span>ventas@petroxsansebastian.com</span>
+					</div>
+					<!-- Dirección -->
+					<div style="display: flex; align-items: center; gap: 1rem;">
+						<i class="fas fa-map-marker-alt" style="color: var(--primary);"></i>
+						<span>Av. Palian 1165, Huancayo</span>
+					</div>
+				</div>
+			</div>
+
+			<!-- Columna Derecha: Formulario de envío -->
+			<form class="contact-form" action="https://formsubmit.co/elyprimax@gmail.com" method="POST">
+				<div class="grid" style="grid-template-columns: 1fr 1fr; gap: 1rem;">
+					<div class="form-group">
+						<label>Nombre</label>
+						<input type="text" name="nombre" placeholder="Tu nombre" required>
+					</div>
+					<div class="form-group">
+						<label>Email</label>
+						<input type="email" name="email" placeholder="tu@email.com" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label>Asunto</label>
+					<input type="text" name="asunto" placeholder="¿En qué podemos ayudarte?">
+				</div>
+				<div class="form-group">
+					<label>Mensaje</label>
+					<textarea name="mensaje" rows="4" placeholder="Tu mensaje aquí..." required></textarea>
+				</div>
+				<!-- Botón de envío -->
+				<button type="submit" class="btn-primary" style="border: none; cursor: pointer; width: 100%;">Enviar
+					Mensaje</button>
+			</form>
+
+		</div>
+	</div>
+</body>
+
+</html>

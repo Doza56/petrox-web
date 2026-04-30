@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Configuración del documento y fuentes -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petrox "SAN SEBASTIAN" | Combustibles de Calidad</title>
+    <meta name="description"
+        content="Estación de Servicios Petrox San Sebastián en Huancayo. Venta de combustibles, lubricantes y servicios las 24 horas. Calidad y rendimiento para tu motor.">
+
+    <!-- Enlace a la hoja de estilos personalizada -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/logo.png">
+
+    <!-- FontAwesome para los iconos -->
+    <script src="https://kit.fontawesome.com/e674bba739.js" crossorigin="anonymous" defer></script>
+</head>
+
+<body>
+
+    <!-- 1. BANNER DE PROMOCIONES (PARTE SUPERIOR) -->
+    <div
+        style="background: var(--primary); color: white; text-align: center; padding: 0.5rem; font-weight: 600; font-size: 0.9rem;">
+        🚀 ¡Participa en la promo más esperada del año! <a href="https://primax.com.pe/la-promo-mas-esperada/"
+            target="_blank" style="text-decoration: underline; margin-left: 10px;"> Saber más</a>
+    </div>
+
+    <!-- 2. ENCABEZADO Y NAVEGACIÓN (HEADER) -->
+    <header id="header">
+        <div class="logo">
+            <img src="img/logo.png" alt="Petrox San Sebastian">
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#hero">Inicio</a></li>
+                <li><a href="#prices">Precios</a></li>
+                <li><a href="#promotions">Promociones</a></li>
+                <li><a href="#extra-services">Servicios</a></li>
+                <li class="dropdown">
+                    <a href="#about" class="dropbtn">Nosotros <i class="fas fa-chevron-down"
+                            style="font-size: 0.7rem;"></i></a>
+                    <div class="dropdown-content">
+                        <a href="#about">Nuestra Identidad</a>
+                        <a href="equipo.html">Nuestro Equipo</a>
+                        <a href="equipo.html#guardians">Guardianes</a>
+                    </div>
+                </li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+        <div class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+        <a href="https://wa.link/5iihkf" target="_blank" class="btn-primary"
+            style="padding: 0.6rem 1.5rem; font-size: 0.9rem;">WhatsApp</a>
+    </header>
+
+    <main>
+        <!-- 3. SECCIÓN HERO (PORTADA PRINCIPAL) -->
+        <section id="hero">
+            <div class="hero-content">
+                <h1>Tu camino merece lo mejor.</h1>
+                <p class="hero-tagline">Venta de Combustibles y Lubricantes con calidad garantizada. Abierto las 24
+                    horas para servirte en Huancayo.</p>
+                <div class="hero-btns">
+                    <a href="#prices" class="btn-primary">Ver Precios Hoy</a>
+                    <a href="#about"
+                        style="margin-left: 20px; color: white; border-bottom: 2px solid var(--primary); padding-bottom: 5px;">Conócenos</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. WIDGET DE PRECIOS INTERACTIVO -->
+        <section id="prices">
+            <div class="section-title">
+                <h2 style="color: var(--primary);">Precios del Día</h2>
+                <p>Haz clic en cualquier combustible para ver sus beneficios. <span id="current-date"></span></p>
+            </div>
+            <div class="price-container">
+                <!-- FUEL 1: REGULAR -->
+                <div class="price-card" onclick="toggleFuel(this)">
+                    <div class="price-main-info">
+                        <div class="fuel-name">
+                            <i class="fas fa-gas-pump"></i>
+                            <div>
+                                Regular
+                                <div style="font-size: 0.75rem; color: var(--text-dim);">G-Regular</div>
+                            </div>
+                        </div>
+                        <div class="fuel-price"><span class="currency">S/</span> 15.40</div>
+                    </div>
+                    <div class="fuel-description">
+                        <div class="fuel-description-content">
+                            <p>Optimiza el rendimiento de motores modernos de uso diario. Su fórmula avanzada ayuda a
+                                mantener limpios los inyectores y válvulas.</p>
+                            <div class="benefit-tags">
+                                <span class="benefit-tag">🚗 Uso Diario</span>
+                                <span class="benefit-tag">✨ Limpieza Motor</span>
+                                <span class="benefit-tag">⚖️ Octanaje 90</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FUEL 2: PREMIUM -->
+                <div class="price-card" onclick="toggleFuel(this)">
+                    <div class="price-main-info">
+                        <div class="fuel-name">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <div>
+                                Premium
+                                <div style="font-size: 0.75rem; color: var(--text-dim);">G-Premium</div>
+                            </div>
+                        </div>
+                        <div class="fuel-price"><span class="currency">S/</span> 17.80</div>
+                    </div>
+                    <div class="fuel-description">
+                        <div class="fuel-description-content">
+                            <p>Máxima potencia y protección para motores de alta exigencia. Reduce fricción y emisiones
+                                para un desempeño superior en carretera.</p>
+                            <div class="benefit-tags">
+                                <span class="benefit-tag">🔥 Máxima Potencia</span>
+                                <span class="benefit-tag">🛡️ Protección Total</span>
+                                <span class="benefit-tag">⚖️ Octanaje 95</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FUEL 3: DIESEL -->
+                <div class="price-card" onclick="toggleFuel(this)">
+                    <div class="price-main-info">
+                        <div class="fuel-name">
+                            <i class="fas fa-truck"></i>
+                            <div>
+                                Diesel
+                                <div style="font-size: 0.75rem; color: var(--text-dim);">DB5 S-50</div>
+                            </div>
+                        </div>
+                        <div class="fuel-price"><span class="currency">S/</span> 16.20</div>
+                    </div>
+                    <div class="fuel-description">
+                        <div class="fuel-description-content">
+                            <p>Combustible de ultra bajo azufre. Ideal para motores Diesel modernos, protegiendo contra
+                                la corrosión y el desgaste prematuro.</p>
+                            <div class="benefit-tags">
+                                <span class="benefit-tag">🚜 Alto Torque</span>
+                                <span class="benefit-tag">🌍 Bajo Azufre</span>
+                                <span class="benefit-tag">🚛 Larga Distancia</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FUEL 4: GLP -->
+                <div class="price-card" style="border-color: var(--accent);" onclick="toggleFuel(this)">
+                    <div class="price-main-info">
+                        <div class="fuel-name">
+                            <i class="fas fa-leaf" style="color: var(--accent);"></i>
+                            <div>
+                                <span style="color: var(--accent);">GLP</span>
+                                <div style="font-size: 0.75rem; color: var(--text-dim);">Gas Automotriz</div>
+                            </div>
+                        </div>
+                        <div class="fuel-price" style="color: var(--accent);"><span class="currency">S/</span> 7.50
+                        </div>
+                    </div>
+                    <div class="fuel-description">
+                        <div class="fuel-description-content">
+                            <p>La alternativa más económica y amigable con el medio ambiente. Reduce tus gastos
+                                mensuales manteniendo la eficiencia de tu motor.</p>
+                            <div class="benefit-tags">
+                                <span class="benefit-tag">💰 Económico</span>
+                                <span class="benefit-tag">🍃 Ecológico</span>
+                                <span class="benefit-tag">🔄 Dual/Gas</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. NOSOTROS (MOVIDO AQUÍ) -->
+        <section id="about">
+            <div class="about-img">
+                <img src="img/per.jpeg" alt="Instalaciones">
+            </div>
+            <div class="about-text">
+                <h2>Nuestra Historia</h2>
+                <p style="color: var(--primary); font-weight: 600;">Fundada en el año 2002</p>
+                <p>Nacimos con el propósito de ofrecer suministro confiable en Huancayo. Más de dos décadas creciendo
+                    junto a nuestra comunidad.</p>
+                <div style="margin-top: 2rem;">
+                    <h3>Principales Logros</h3>
+                    <p><i class="fas fa-award" style="color: var(--primary);"></i> Certificación de Calidad Primax</p>
+                    <p><i class="fas fa-star" style="color: var(--primary);"></i> Líder en satisfacción 2023</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. IDENTIDAD (MOVIDO AQUÍ) -->
+        <section class="identity-grid">
+            <div class="identity-card">
+                <h3>Misión</h3>
+                <p>Suministro confiable y seguro, asegurando una experiencia excepcional y desarrollo sostenible.</p>
+            </div>
+            <div class="identity-card">
+                <h3>Visión</h3>
+                <p>Ser la estación líder de la región Junín, destacando por tecnología y honestidad.</p>
+            </div>
+            <div class="identity-card">
+                <h3>Valores</h3>
+                <ul style="list-style: none;">
+                    <li><i class="fas fa-check" style="color: var(--primary);"></i> Integridad</li>
+                    <li><i class="fas fa-check" style="color: var(--primary);"></i> Seguridad</li>
+                    <li><i class="fas fa-check" style="color: var(--primary);"></i> Excelencia</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 7. FACTURACIÓN ELECTRÓNICA -->
+        <section id="billing"
+            style="background: rgba(255, 95, 0, 0.05); padding: 50px 10%; border-top: 1px solid var(--glass-border);">
+            <div
+                style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem;">
+                <div>
+                    <h2 style="color: var(--primary); margin-bottom: 0.5rem;">Facturación Electrónica</h2>
+                    <p style="color: var(--text-dim);">Solicita tu factura al instante y lleva el control de tus
+                        consumos de forma digital.</p>
+                </div>
+                <a href="contacto.html" class="btn-primary"
+                    style="background: white; color: var(--primary); border: 2px solid var(--primary);">Solicitar
+                    factura física/digital</a>
+            </div>
+        </section>
+
+        <!-- 8. SECCIÓN DE PROMOCIONES -->
+        <section id="promotions">
+            <div class="section-title">
+                <h2>Promociones Exclusivas</h2>
+                <p>Beneficios de ser cliente San Sebastián</p>
+            </div>
+            <div class="promo-grid">
+                <div class="promo-card">
+                    <h3>¡La Promo más esperada!</h3>
+                    <p>Participa por increíbles premios con cada carga de combustible.</p>
+                    <a href="https://primax.com.pe/la-promo-mas-esperada/" target="_blank" class="btn-primary"
+                        style="margin-top: 1.5rem;">Participar</a>
+                </div>
+                <div class="promo-card" style="border-color: var(--accent);">
+                    <h3 style="color: var(--accent);">Puntos Bonus</h3>
+                    <p>Acumula puntos en cada compra y canjéalos por productos.</p>
+                    <a href="#" class="btn-primary" style="margin-top: 1.5rem; background: var(--accent);">Ver
+                        catálogo</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. SECCIÓN DE SERVICIOS -->
+        <section id="extra-services">
+            <div class="section-title">
+                <h2>Más que Combustible</h2>
+                <p>Servicios diseñados para tu comodidad</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-item">
+                    <i class="fas fa-shopping-basket"></i>
+                    <h3>Mini Market</h3>
+                    <p>Snacks, bebidas y todo lo necesario para tu viaje.</p>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-oil-can"></i>
+                    <h3>Lubricantes</h3>
+                    <p>La mejor selección de aceites para el cuidado de tu motor.</p>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-wind"></i>
+                    <h3>Aire y Agua</h3>
+                    <p>Servicio gratuito de aire para neumáticos y agua.</p>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-restroom"></i>
+                    <h3>Baños Limpios</h3>
+                    <p>Instalaciones impecables para tu tranquilidad.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 10. PREGUNTAS FRECUENTES -->
+        <section id="faq" class="faq-container">
+            <div class="section-title">
+                <h2 style="color: var(--primary);">Preguntas Frecuentes</h2>
+                <p>Resolvemos tus dudas al instante con transparencia y rapidez.</p>
+            </div>
+            <div class="faq-wrapper">
+                <!-- PREGUNTA 1 -->
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <div class="faq-question-box">
+                            <i class="fas fa-credit-card topic-icon"></i>
+                            <h3>¿Qué medios de pago aceptan?</h3>
+                        </div>
+                        <i class="fas fa-plus toggle-icon"></i>
+                    </div>
+                    <div class="faq-content">
+                        <p>Aceptamos efectivo, todas las tarjetas de crédito y débito (Visa, Mastercard, Amex),
+                            billeteras digitales como Yape y Plin, y transferencias directas para flotas corporativas.
+                        </p>
+                    </div>
+                </div>
+                <!-- PREGUNTA 2 -->
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <div class="faq-question-box">
+                            <i class="fas fa-clock topic-icon"></i>
+                            <h3>¿Atienden feriados y madrugadas?</h3>
+                        </div>
+                        <i class="fas fa-plus toggle-icon"></i>
+                    </div>
+                    <div class="faq-content">
+                        <p>Sí, nuestra estación opera las 24 horas del día, los 365 días del año. Incluyendo Navidad,
+                            Año Nuevo y feriados nacionales para que nunca te quedes detenido.</p>
+                    </div>
+                </div>
+                <!-- PREGUNTA 3 -->
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <div class="faq-question-box">
+                            <i class="fas fa-tools topic-icon"></i>
+                            <h3>¿Cuentan con servicio de inflado de llantas?</h3>
+                        </div>
+                        <i class="fas fa-plus toggle-icon"></i>
+                    </div>
+                    <div class="faq-content">
+                        <p>Contamos con una estación de aire digital gratuita para todos nuestros clientes. Solo debes
+                            acercarte a la zona debidamente señalizada.</p>
+                    </div>
+                </div>
+                <!-- PREGUNTA 4 -->
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <div class="faq-question-box">
+                            <i class="fas fa-file-invoice-dollar topic-icon"></i>
+                            <h3>¿Cómo solicito mi factura electrónica?</h3>
+                        </div>
+                        <i class="fas fa-plus toggle-icon"></i>
+                    </div>
+                    <div class="faq-content">
+                        <p>Puedes solicitarla al momento del despacho con el promotor de ventas. También puedes
+                            enviarnos tus datos vía WhatsApp para envíos digitales posteriores.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 11. TESTIMONIOS -->
+        <section id="testimonials">
+            <div class="testimonial-box">
+                <i class="fas fa-quote-left" style="font-size: 2rem; color: var(--primary); margin-bottom: 2rem;"></i>
+                <h2>La voz de nuestros clientes</h2>
+                <p>"Excelente estación, los baños siempre impecables. El combustible rinde mucho más."</p>
+                <div class="client-info">
+                    <strong style="color: var(--primary);">Ricardo Mendoza</strong>
+                    <p>Conductor Frecuente</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 12. FOOTER -->
+    <footer id="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3>Petrox San Sebastián S.A.C.</h3>
+                <div class="map-container" style="margin-top: 1rem;">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d487.7752132622187!2d-75.18834988288658!3d-12.029630380570469!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x910ebd64e9d408fd%3A0xb2dfd1d22d971de7!2sEstacion%20De%20Servicios%20Primax!5e0!3m2!1ses-419!2spe!4v1701879553742!5m2!1ses-419!2spe"
+                        width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Navegación</h4>
+                <ul style="list-style: none; margin-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                    <li><a href="#hero">Inicio</a></li>
+                    <li><a href="#prices">Precios</a></li>
+                    <li><a href="#about">Nosotros</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Ubícanos</h4>
+                <div style="margin-top: 1rem; font-size: 0.9rem; display: flex; flex-direction: column; gap: 0.8rem;">
+                    <p><i class="fas fa-map-marker-alt"></i> Av. Palian Nro. 1165</p>
+                    <p><i class="fas fa-phone"></i> (064) 399 548</p>
+                    <p><i class="fas fa-envelope"></i> elyprimax@gmail.com</p>
+                    <p><i class="fas fa-id-card"></i> RUC: 20568647417</p>
+                    <div class="social-links" style="margin-top: 1rem;">
+                        <a href="https://www.facebook.com/share/1SmZtY4T42/" target="_blank"><i
+                                class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/est_petrox_san_sebastian_hyo?igsh=MWlkM2JyZW1tazg5dQ=="
+                            target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.link/5iihkf" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div
+            style="text-align: center; border-top: 1px solid var(--glass-border); padding-top: 2rem; font-size: 0.8rem; color: var(--text-dim);">
+            <p>&copy; 2026 Petrox San Sebastián S.A.C. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.link/5iihkf" target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
