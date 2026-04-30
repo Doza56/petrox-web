@@ -220,8 +220,19 @@ if (contactForm) {
 // Tu clienta debe publicar su Google Sheet como CSV y pegar el enlace aquí dentro de las comillas:
 const GOOGLE_SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRb7Kq96nJhPkVBaredYV2CkPCpKKlkIyXmOio0JOL5DCQZHvIXPrAuYIvWdepbcsMKzmyywYEMn75G/pub?output=csv';
 
+// Precios por defecto en caso de que falle la carga
+window.fuelPrices = {
+    regular: 15.40,
+    premium: 17.80,
+    diesel: 16.20,
+    glp: 7.50
+};
+
 async function loadPrices() {
-    if (!GOOGLE_SHEET_CSV_URL || GOOGLE_SHEET_CSV_URL === '') return; // Si no hay enlace, usar precios por defecto del HTML
+    if (!GOOGLE_SHEET_CSV_URL || GOOGLE_SHEET_CSV_URL === '') {
+        updateCalculator();
+        return;
+    }
 
     try {
         // Añadimos un parámetro de tiempo para evitar que el navegador guarde en caché el precio viejo
@@ -241,22 +252,85 @@ async function loadPrices() {
                 
                 if (combustible.includes('regular') && document.getElementById('price-regular')) {
                     document.getElementById('price-regular').textContent = precio;
+                    window.fuelPrices.regular = parseFloat(precio);
                 }
                 else if (combustible.includes('premium') && document.getElementById('price-premium')) {
                     document.getElementById('price-premium').textContent = precio;
+                    window.fuelPrices.premium = parseFloat(precio);
                 }
                 else if (combustible.includes('diesel') && document.getElementById('price-diesel')) {
                     document.getElementById('price-diesel').textContent = precio;
+                    window.fuelPrices.diesel = parseFloat(precio);
                 }
                 else if (combustible.includes('glp') && document.getElementById('price-glp')) {
                     document.getElementById('price-glp').textContent = precio;
+                    window.fuelPrices.glp = parseFloat(precio);
                 }
             }
         }
     } catch (error) {
         console.error('Error al cargar los precios desde Google Sheets:', error);
+    } finally {
+        updateCalculator();
     }
 }
 
-// Llamar a la función al cargar la página
-document.addEventListener('DOMContentLoaded', loadPrices);
+// 8. LOGICA DE LA CALCULADORA DE COMBUSTIBLE
+const calcFuel = document.getElementById('calc-fuel');
+const calcMoney = document.getElementById('calc-money');
+const calcGallons = document.getElementById('calc-gallons');
+
+function updateCalculator() {
+    if (!calcFuel || !calcMoney || !calcGallons) return;
+    
+    const fuelType = calcFuel.value;
+    const moneyStr = calcMoney.value;
+    
+    if (moneyStr === '' || isNaN(parseFloat(moneyStr))) {
+        calcGallons.textContent = '0.00';
+        return;
+    }
+    
+    const money = parseFloat(moneyStr);
+    const pricePerGallon = window.fuelPrices[fuelType];
+    
+    if (pricePerGallon > 0) {
+        const gallons = (money / pricePerGallon).toFixed(2);
+        calcGallons.textContent = gallons;
+    }
+}
+
+if (calcFuel && calcMoney) {
+    calcFuel.addEventListener('change', updateCalculator);
+    calcMoney.addEventListener('input', updateCalculator);
+}
+
+// 9. TOAST DE BIENVENIDA
+function showWelcomeToast() {
+    const toast = document.getElementById('welcome-toast');
+    const closeBtn = document.getElementById('close-toast');
+    
+    if (toast && closeBtn) {
+        // Mostrar después de 2 segundos
+        setTimeout(() => {
+            toast.classList.add('show');
+            
+            // Ocultar automáticamente después de 6 segundos
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 6000);
+            
+        }, 2000);
+        
+        // Cerrar al hacer clic en X
+        closeBtn.addEventListener('click', () => {
+            toast.classList.remove('show');
+        });
+    }
+}
+
+// Llamar a las funciones al cargar la página
+document.addEventListener('DOMContentLoaded', () => {
+    loadPrices();
+    showWelcomeToast();
+});
