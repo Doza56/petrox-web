@@ -252,18 +252,30 @@ async function loadPrices() {
                 
                 if (combustible.includes('regular') && document.getElementById('price-regular')) {
                     document.getElementById('price-regular').textContent = precio;
+                    if (document.getElementById('totem-price-regular')) {
+                        document.getElementById('totem-price-regular').textContent = precio;
+                    }
                     window.fuelPrices.regular = parseFloat(precio);
                 }
                 else if (combustible.includes('premium') && document.getElementById('price-premium')) {
                     document.getElementById('price-premium').textContent = precio;
+                    if (document.getElementById('totem-price-premium')) {
+                        document.getElementById('totem-price-premium').textContent = precio;
+                    }
                     window.fuelPrices.premium = parseFloat(precio);
                 }
                 else if (combustible.includes('diesel') && document.getElementById('price-diesel')) {
                     document.getElementById('price-diesel').textContent = precio;
+                    if (document.getElementById('totem-price-diesel')) {
+                        document.getElementById('totem-price-diesel').textContent = precio;
+                    }
                     window.fuelPrices.diesel = parseFloat(precio);
                 }
                 else if (combustible.includes('glp') && document.getElementById('price-glp')) {
                     document.getElementById('price-glp').textContent = precio;
+                    if (document.getElementById('totem-price-glp')) {
+                        document.getElementById('totem-price-glp').textContent = precio;
+                    }
                     window.fuelPrices.glp = parseFloat(precio);
                 }
             }
