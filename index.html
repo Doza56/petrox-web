@@ -98,6 +98,10 @@
         <div class="hamburger" id="hamburger" aria-label="Abrir menú de navegación" role="button" tabindex="0">
             <i class="fas fa-bars"></i>
         </div>
+        <div id="live-status" style="display: flex; align-items: center; gap: 0.5rem; background: rgba(0,0,0,0.5); padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.8rem; border: 1px solid var(--glass-border); margin-left: auto; margin-right: 20px;">
+            <span id="status-dot" style="width: 8px; height: 8px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 10px #22c55e;"></span>
+            <span id="status-text">Abierto 24/7</span>
+        </div>
         <a href="https://wa.link/5iihkf" target="_blank" class="btn-primary"
             style="padding: 0.6rem 1.5rem; font-size: 0.9rem;">WhatsApp</a>
     </header>
@@ -261,6 +265,26 @@
                         <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary);"><span id="calc-gallons">0.00</span> <small style="font-size: 1rem; color: var(--text-dim);">Galones</small></div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- GUÍA INTERACTIVA DE COMBUSTIBLES -->
+        <section id="recommender" style="padding: 60px 10%; background: var(--bg-dark); border-top: 1px solid var(--glass-border);">
+            <div class="section-title" style="margin-bottom: 2rem;">
+                <h2 style="color: var(--primary);">Elige tu Combustible Ideal</h2>
+                <p>Descubre qué combustible optimiza el rendimiento de tu motor.</p>
+            </div>
+            
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem;">
+                <button class="btn-primary recommender-btn active" onclick="recommendFuel('compacto')" style="background: transparent; border: 1px solid var(--primary); color: white;">Auto Compacto</button>
+                <button class="btn-primary recommender-btn" onclick="recommendFuel('deportivo')" style="background: transparent; border: 1px solid var(--glass-border); color: var(--text-dim);">Deportivo / SUV</button>
+                <button class="btn-primary recommender-btn" onclick="recommendFuel('trabajo')" style="background: transparent; border: 1px solid var(--glass-border); color: var(--text-dim);">Transporte Público</button>
+            </div>
+
+            <div id="recommender-result" style="max-width: 600px; margin: 0 auto; background: var(--glass-bg); padding: 2rem; border-radius: 20px; border: 1px solid var(--primary); text-align: center; transition: all 0.3s ease;">
+                <h3 id="rec-title" style="color: var(--text-main); font-size: 1.5rem; margin-bottom: 1rem;">Recomendamos: <span style="color: var(--primary);">Regular (G-Regular)</span></h3>
+                <p id="rec-desc" style="color: var(--text-dim);">Ideal para motores de uso diario en la ciudad. Ayuda a mantener limpios los inyectores y proporciona un rendimiento económico y eficiente para tus trayectos cotidianos en Huancayo.</p>
+                <i id="rec-icon" class="fas fa-car" style="font-size: 3rem; color: var(--primary); margin-top: 1.5rem; opacity: 0.8;"></i>
             </div>
         </section>
 
@@ -547,6 +571,11 @@
             <div id="billingStatus" style="display: none; padding: 1rem; border-radius: 12px; text-align: center; font-weight: 600; margin-top: 1rem;"></div>
         </div>
     </div>
+
+    <!-- BOTÓN VOLVER ARRIBA -->
+    <a href="#hero" id="back-to-top" aria-label="Volver arriba" style="position: fixed; bottom: 6rem; right: 2rem; width: 45px; height: 45px; background: var(--glass-bg); border: 1px solid var(--glass-border); color: var(--primary); border-radius: 50%; display: none; align-items: center; justify-content: center; font-size: 1.2rem; z-index: 999; backdrop-filter: blur(10px); transition: var(--transition);">
+        <i class="fas fa-chevron-up"></i>
+    </a>
 
     <script src="script.js"></script>
 </body>

@@ -432,3 +432,87 @@ if (billingForm) {
         }
     });
 }
+
+// 13. INDICADOR DE TRÁFICO EN VIVO
+function initLiveStatus() {
+    const statusDot = document.getElementById('status-dot');
+    const statusText = document.getElementById('status-text');
+    
+    if (statusDot && statusText) {
+        const hour = new Date().getHours();
+        
+        // Simulación lógica de afluencia
+        if (hour >= 23 || hour < 5) {
+            statusDot.style.background = '#22c55e'; // Verde
+            statusDot.style.boxShadow = '0 0 10px #22c55e';
+            statusText.textContent = 'Tránsito libre - Sin filas';
+        } else if ((hour >= 7 && hour <= 9) || (hour >= 18 && hour <= 20)) {
+            statusDot.style.background = '#eab308'; // Amarillo
+            statusDot.style.boxShadow = '0 0 10px #eab308';
+            statusText.textContent = 'Hora punta - Todas las pistas activas';
+        } else {
+            statusDot.style.background = '#22c55e'; // Verde
+            statusDot.style.boxShadow = '0 0 10px #22c55e';
+            statusText.textContent = 'Tránsito fluido - Atención rápida';
+        }
+    }
+}
+
+// 14. GUÍA INTERACTIVA DE COMBUSTIBLES
+function recommendFuel(type) {
+    const title = document.getElementById('rec-title');
+    const desc = document.getElementById('rec-desc');
+    const icon = document.getElementById('rec-icon');
+    const buttons = document.querySelectorAll('.recommender-btn');
+    
+    // Resetear botones
+    buttons.forEach(btn => {
+        btn.style.background = 'transparent';
+        btn.style.borderColor = 'var(--glass-border)';
+        btn.style.color = 'var(--text-dim)';
+        btn.classList.remove('active');
+    });
+    
+    // Activar botón seleccionado
+    event.currentTarget.style.borderColor = 'var(--primary)';
+    event.currentTarget.style.color = 'white';
+    event.currentTarget.classList.add('active');
+    
+    // Actualizar contenido
+    if (type === 'compacto') {
+        title.innerHTML = 'Recomendamos: <span style="color: var(--primary);">Regular (G-Regular)</span>';
+        desc.textContent = 'Ideal para motores de uso diario en la ciudad. Ayuda a mantener limpios los inyectores y proporciona un rendimiento económico y eficiente para tus trayectos cotidianos en Huancayo.';
+        icon.className = 'fas fa-car';
+    } else if (type === 'deportivo') {
+        title.innerHTML = 'Recomendamos: <span style="color: var(--primary);">Premium (G-Premium)</span>';
+        desc.textContent = 'Para motores modernos, turboalimentados o de alta exigencia. Maximiza la potencia, protege contra la fricción y limpia el motor para que rinda al máximo en carreteras.';
+        icon.className = 'fas fa-tachometer-alt';
+    } else if (type === 'trabajo') {
+        title.innerHTML = 'Recomendamos: <span style="color: var(--primary);">Diesel o GLP</span>';
+        desc.textContent = 'El Diesel DB5 S-50 cuida los motores de carga pesada reduciendo el desgaste. Si usas auto dual, el GLP te dará el mayor ahorro mensual sin perder potencia en la altura.';
+        icon.className = 'fas fa-truck-pickup';
+    }
+}
+
+// 15. BOTÓN VOLVER ARRIBA
+function setupBackToTop() {
+    const backToTopBtn = document.getElementById('back-to-top');
+    if (backToTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTopBtn.style.display = 'flex';
+                backToTopBtn.style.opacity = '1';
+            } else {
+                backToTopBtn.style.opacity = '0';
+                setTimeout(() => {
+                    if (window.scrollY <= 500) backToTopBtn.style.display = 'none';
+                }, 300);
+            }
+        });
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    initLiveStatus();
+    setupBackToTop();
+});
