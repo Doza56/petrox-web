@@ -45,6 +45,15 @@
 
 <body>
 
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <div class="loader-content">
+            <i class="fas fa-gas-pump" style="font-size: 3rem; color: var(--primary); animation: pulse 1.5s infinite;"></i>
+            <h2 style="margin-top: 1rem; color: white; font-weight: 600; letter-spacing: 2px;">PETROX</h2>
+            <p style="color: var(--primary); font-size: 0.8rem; letter-spacing: 1px;">CARGANDO...</p>
+        </div>
+    </div>
+
     <!-- Toast de Bienvenida -->
     <div id="welcome-toast" class="toast hidden">
         <div class="toast-content">
@@ -304,9 +313,9 @@
                     <p style="color: var(--text-dim);">Solicita tu factura al instante y lleva el control de tus
                         consumos de forma digital.</p>
                 </div>
-                <a href="contacto.html" class="btn-primary"
-                    style="background: white; color: var(--primary); border: 2px solid var(--primary);">Solicitar
-                    factura física/digital</a>
+                <button onclick="openBillingModal()" class="btn-primary"
+                    style="background: white; color: var(--primary); border: 2px solid var(--primary); cursor: pointer;">Solicitar
+                    factura física/digital</button>
             </div>
         </section>
 
@@ -324,10 +333,9 @@
                         style="margin-top: 1.5rem;">Participar</a>
                 </div>
                 <div class="promo-card" style="border-color: var(--accent);">
-                    <h3 style="color: var(--accent);">Puntos Bonus</h3>
-                    <p>Acumula puntos en cada compra y canjéalos por productos.</p>
-                    <a href="#" class="btn-primary" style="margin-top: 1.5rem; background: var(--accent);">Ver
-                        catálogo</a>
+                    <h3 style="color: var(--accent);">Atención a Flotas</h3>
+                    <p>Descuentos especiales y control de consumo para empresas de transporte.</p>
+                    <a href="contacto.html" class="btn-primary" style="margin-top: 1.5rem; background: var(--accent);">Contactar</a>
                 </div>
             </div>
         </section>
@@ -429,15 +437,42 @@
             </div>
         </section>
 
-        <!-- 11. TESTIMONIOS -->
+        <!-- 11. TESTIMONIOS (CARRUSEL) -->
         <section id="testimonials">
-            <div class="testimonial-box">
-                <i class="fas fa-quote-left" style="font-size: 2rem; color: var(--primary); margin-bottom: 2rem;"></i>
-                <h2>La voz de nuestros clientes</h2>
-                <p>"Excelente estación, los baños siempre impecables. El combustible rinde mucho más."</p>
-                <div class="client-info">
-                    <strong style="color: var(--primary);">Ricardo Mendoza</strong>
-                    <p>Conductor Frecuente</p>
+            <div class="section-title">
+                <h2 style="color: var(--primary);">La voz de nuestros clientes</h2>
+            </div>
+            <div class="carousel-container">
+                <div class="carousel-track" id="testimonial-track">
+                    <div class="testimonial-box">
+                        <i class="fas fa-quote-left" style="font-size: 2rem; color: var(--primary); margin-bottom: 1rem;"></i>
+                        <p>"Excelente estación, los baños siempre impecables. El combustible rinde mucho más."</p>
+                        <div class="client-info" style="margin-top: 1rem;">
+                            <strong style="color: var(--primary);">Ricardo Mendoza</strong>
+                            <p style="color: #fbbf24; font-size: 0.8rem; margin-top: 0.2rem;">⭐⭐⭐⭐⭐</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-box">
+                        <i class="fas fa-quote-left" style="font-size: 2rem; color: var(--primary); margin-bottom: 1rem;"></i>
+                        <p>"Atención rápida las 24 horas. El personal es muy amable incluso de madrugada."</p>
+                        <div class="client-info" style="margin-top: 1rem;">
+                            <strong style="color: var(--primary);">Sofia Carvajal</strong>
+                            <p style="color: #fbbf24; font-size: 0.8rem; margin-top: 0.2rem;">⭐⭐⭐⭐⭐</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-box">
+                        <i class="fas fa-quote-left" style="font-size: 2rem; color: var(--primary); margin-bottom: 1rem;"></i>
+                        <p>"Los precios están siempre a la vista y la medida es exacta. 100% recomendados."</p>
+                        <div class="client-info" style="margin-top: 1rem;">
+                            <strong style="color: var(--primary);">Carlos H.</strong>
+                            <p style="color: #fbbf24; font-size: 0.8rem; margin-top: 0.2rem;">⭐⭐⭐⭐⭐</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-dots">
+                    <span class="dot active" onclick="moveCarousel(0)"></span>
+                    <span class="dot" onclick="moveCarousel(1)"></span>
+                    <span class="dot" onclick="moveCarousel(2)"></span>
                 </div>
             </div>
         </section>
@@ -489,6 +524,30 @@
     <a href="https://wa.link/5iihkf" target="_blank" class="whatsapp-float" aria-label="Chatear por WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
+
+    <!-- MODAL FACTURACIÓN -->
+    <div id="billing-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeBillingModal()">&times;</span>
+            <h3 style="color: var(--primary); margin-bottom: 0.5rem; font-size: 1.5rem;">Factura Electrónica</h3>
+            <p style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 1.5rem;">Completa los datos para enviarte el comprobante.</p>
+            <form action="https://formsubmit.co/elyprimax@gmail.com" method="POST" id="billingForm">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_subject" value="Nueva Solicitud de Factura - Web">
+                <div class="form-group" style="margin-bottom: 1rem;">
+                    <input type="text" name="ruc" placeholder="RUC (11 dígitos)" required class="calc-input" style="width: 100%; background: rgba(255,255,255,0.05); color: white; border: 1px solid var(--glass-border); padding: 1rem; border-radius: 12px; outline: none;">
+                </div>
+                <div class="form-group" style="margin-bottom: 1rem;">
+                    <input type="text" name="razon_social" placeholder="Razón Social" required class="calc-input" style="width: 100%; background: rgba(255,255,255,0.05); color: white; border: 1px solid var(--glass-border); padding: 1rem; border-radius: 12px; outline: none;">
+                </div>
+                <div class="form-group" style="margin-bottom: 1rem;">
+                    <input type="text" name="placa_monto" placeholder="Placa del Vehículo y Monto Exacto" required class="calc-input" style="width: 100%; background: rgba(255,255,255,0.05); color: white; border: 1px solid var(--glass-border); padding: 1rem; border-radius: 12px; outline: none;">
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%; border: none; cursor: pointer; margin-top: 0.5rem;">Enviar Solicitud</button>
+            </form>
+            <div id="billingStatus" style="display: none; padding: 1rem; border-radius: 12px; text-align: center; font-weight: 600; margin-top: 1rem;"></div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

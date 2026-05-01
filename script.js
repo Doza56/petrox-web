@@ -334,3 +334,101 @@ document.addEventListener('DOMContentLoaded', () => {
     loadPrices();
     showWelcomeToast();
 });
+
+// 10. PRELOADER
+window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        setTimeout(() => {
+            preloader.classList.add('hidden');
+        }, 800);
+    }
+});
+
+// 11. CARRUSEL DE TESTIMONIOS
+let currentSlide = 0;
+const track = document.getElementById('testimonial-track');
+const dots = document.querySelectorAll('.carousel-dots .dot');
+
+function moveCarousel(index) {
+    if (!track || dots.length === 0) return;
+    
+    currentSlide = index;
+    track.style.transform = `translateX(-${currentSlide * 100}%)`;
+    
+    dots.forEach(dot => dot.classList.remove('active'));
+    dots[currentSlide].classList.add('active');
+}
+
+// Auto-play del carrusel
+if (track && dots.length > 0) {
+    setInterval(() => {
+        let nextSlide = (currentSlide + 1) % dots.length;
+        moveCarousel(nextSlide);
+    }, 5000);
+}
+
+// 12. MODAL DE FACTURACIÓN
+const billingModal = document.getElementById('billing-modal');
+
+function openBillingModal() {
+    if (billingModal) {
+        billingModal.style.display = 'block';
+    }
+}
+
+function closeBillingModal() {
+    if (billingModal) {
+        billingModal.style.display = 'none';
+    }
+}
+
+// Cerrar modal al hacer clic fuera de él
+window.addEventListener('click', (event) => {
+    if (event.target === billingModal) {
+        closeBillingModal();
+    }
+});
+
+// Envío del formulario de facturación por AJAX
+const billingForm = document.getElementById('billingForm');
+if (billingForm) {
+    billingForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const btn = billingForm.querySelector('button[type="submit"]');
+        const status = document.getElementById('billingStatus');
+        
+        btn.textContent = 'Enviando...';
+        btn.disabled = true;
+        status.style.display = 'none';
+
+        try {
+            const formData = new FormData(billingForm);
+            const response = await fetch(billingForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            });
+
+            if (response.ok) {
+                status.textContent = '✅ ¡Solicitud enviada! Pronto te llegará la factura al correo/WhatsApp registrado.';
+                status.style.color = '#25d366';
+                status.style.backgroundColor = 'rgba(37, 211, 102, 0.1)';
+                status.style.display = 'block';
+                billingForm.reset();
+                setTimeout(closeBillingModal, 4000); // Cerrar después de 4 seg
+            } else {
+                throw new Error('Error de servidor');
+            }
+        } catch (error) {
+            status.textContent = '❌ Hubo un error al enviar. Por favor, intenta de nuevo.';
+            status.style.color = '#ef4444';
+            status.style.backgroundColor = 'rgba(239, 68, 68, 0.1)';
+            status.style.display = 'block';
+        } finally {
+            btn.textContent = 'Enviar Solicitud';
+            btn.disabled = false;
+        }
+    });
+}
