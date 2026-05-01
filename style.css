@@ -1053,8 +1053,15 @@ a {
 }
 
 .totem-top img {
-    height: 60px;
-    filter: drop-shadow(0 0 10px var(--primary));
+    height: 70px;
+    filter: drop-shadow(0 0 15px var(--primary)) drop-shadow(0 0 5px rgba(255, 255, 255, 0.8));
+    transition: var(--transition);
+    animation: logoGlow 3s ease-in-out infinite;
+}
+
+@keyframes logoGlow {
+    0%, 100% { filter: drop-shadow(0 0 15px var(--primary)) drop-shadow(0 0 5px rgba(255, 255, 255, 0.8)); }
+    50% { filter: drop-shadow(0 0 25px var(--primary)) drop-shadow(0 0 10px rgba(255, 255, 255, 1)); }
 }
 
 .totem-brand {
