@@ -433,30 +433,6 @@ if (billingForm) {
     });
 }
 
-// 13. INDICADOR DE TRÁFICO EN VIVO
-function initLiveStatus() {
-    const statusDot = document.getElementById('status-dot');
-    const statusText = document.getElementById('status-text');
-    
-    if (statusDot && statusText) {
-        const hour = new Date().getHours();
-        
-        // Simulación lógica de afluencia
-        if (hour >= 23 || hour < 5) {
-            statusDot.style.background = '#22c55e'; // Verde
-            statusDot.style.boxShadow = '0 0 10px #22c55e';
-            statusText.textContent = 'Tránsito libre - Sin filas';
-        } else if ((hour >= 7 && hour <= 9) || (hour >= 18 && hour <= 20)) {
-            statusDot.style.background = '#eab308'; // Amarillo
-            statusDot.style.boxShadow = '0 0 10px #eab308';
-            statusText.textContent = 'Hora punta - Todas las pistas activas';
-        } else {
-            statusDot.style.background = '#22c55e'; // Verde
-            statusDot.style.boxShadow = '0 0 10px #22c55e';
-            statusText.textContent = 'Tránsito fluido - Atención rápida';
-        }
-    }
-}
 
 // 14. GUÍA INTERACTIVA DE COMBUSTIBLES
 function recommendFuel(type) {
@@ -513,6 +489,5 @@ function setupBackToTop() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    initLiveStatus();
     setupBackToTop();
 });
