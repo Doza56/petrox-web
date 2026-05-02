@@ -376,17 +376,33 @@ async function fetchNews() {
 function setupRouteCalculator() {
     const dest = document.getElementById('route-destination');
     const vehicle = document.getElementById('route-vehicle');
+    const customKmGroup = document.getElementById('custom-km-group');
+    const customKmInput = document.getElementById('custom-km');
+    
     if (!dest || !vehicle) return;
+    
     const update = () => {
-        const dist = parseFloat(dest.value);
+        let dist;
+        
+        if (dest.value === 'custom') {
+            customKmGroup.style.display = 'block';
+            dist = parseFloat(customKmInput.value) || 0;
+        } else {
+            customKmGroup.style.display = 'none';
+            dist = parseFloat(dest.value);
+        }
+        
         const eff = parseFloat(vehicle.value);
-        const price = window.fuelPrices.regular;
+        const price = (window.fuelPrices && window.fuelPrices.regular) ? window.fuelPrices.regular : 15.40;
         const gal = (dist / eff).toFixed(2);
+        
         document.getElementById('route-gallons').textContent = gal;
         document.getElementById('route-cost').textContent = `S/ ${(gal * price).toFixed(2)}`;
     };
+    
     dest.addEventListener('change', update);
     vehicle.addEventListener('change', update);
+    customKmInput.addEventListener('input', update);
     update();
 }
 
