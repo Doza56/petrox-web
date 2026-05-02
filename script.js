@@ -8,22 +8,19 @@ ESTACIÓN DE SERVICIOS PETROX "SAN SEBASTIAN" - JAVASCRIPT
 const header = document.getElementById('header');
 
 window.addEventListener('scroll', () => {
-    // Si el usuario baja más de 50px, el header se vuelve más compacto y oscuro
     if (window.scrollY > 50) {
         header.style.padding = '1rem 5%';
         header.style.background = 'rgba(10, 10, 11, 0.95)';
     } else {
-        // Vuelve a su estado original al estar arriba
         header.style.padding = '1.5rem 5%';
         header.style.background = 'rgba(15, 15, 18, 0.7)';
     }
 });
 
-// 2. DESPLAZAMIENTO SUAVE (SMOOTH SCROLL) PARA LOS ENLACES DEL MENÚ
+// 2. DESPLAZAMIENTO SUAVE (SMOOTH SCROLL)
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         const href = this.getAttribute('href');
-        // Solo aplica si el enlace tiene un destino válido
         if (href !== '#' && href.startsWith('#')) {
             e.preventDefault();
             const target = document.querySelector(href);
@@ -36,26 +33,30 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// 3. ANIMACIONES DE APARICIÓN (REVEAL ANIMATIONS) AL BAJAR
+// 3. ANIMACIONES DE APARICIÓN
 const observerOptions = {
-    threshold: 0.1 // El elemento debe ser visible al menos un 10%
+    threshold: 0.1
 };
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            // Cuando el elemento entra en pantalla, lo hacemos visible
             entry.target.style.opacity = '1';
             entry.target.style.transform = 'translateY(0)';
         }
     });
 }, observerOptions);
 
-// 3. LOGICA PARA CARDS DE PRECIO (REVELAR DESCRIPCIÓN)
+document.querySelectorAll('.card, .about-text, .testimonial-box, .price-card, .service-item, .promo-card, .identity-card, .guide-item, .member-card, .faq-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'all 0.6s ease-out';
+    observer.observe(el);
+});
+
+// 4. LOGICA PARA CARDS DE PRECIO
 function toggleFuel(card) {
     const description = card.querySelector('.fuel-description');
-
-    // Cerrar otros
     document.querySelectorAll('.price-card').forEach(other => {
         if (other !== card) {
             other.classList.remove('active');
@@ -71,14 +72,13 @@ function toggleFuel(card) {
     }
 }
 
-// 4. LOGICA DE ACORDEÓN PARA FAQ
+// 5. LOGICA DE ACORDEÓN PARA FAQ
 document.querySelectorAll('.faq-header').forEach(header => {
     header.addEventListener('click', () => {
         const item = header.parentElement;
         const content = item.querySelector('.faq-content');
         const icon = header.querySelector('i');
 
-        // Cerrar otros abiertos (opcional)
         document.querySelectorAll('.faq-item').forEach(otherItem => {
             if (otherItem !== item) {
                 otherItem.querySelector('.faq-content').style.maxHeight = null;
@@ -96,119 +96,73 @@ document.querySelectorAll('.faq-header').forEach(header => {
     });
 });
 
-// Aplicamos la animación a tarjetas, textos de "Nosotros", testimonios, etc.
-document.querySelectorAll('.card, .about-text, .testimonial-box, .price-card, .service-item, .promo-card, .identity-card, .guide-item, .member-card, .faq-item').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'all 0.6s ease-out';
-    observer.observe(el);
-});
-
-// 4. ACTUALIZACIÓN DE FECHA EN EL WIDGET DE PRECIOS
+// 6. ACTUALIZACIÓN DE FECHA
 const dateElement = document.getElementById('current-date');
 if (dateElement) {
     const now = new Date();
     const options = { day: '2-digit', month: 'long', year: 'numeric' };
-    // Muestra la fecha en formato: "24 de abril de 2026"
     dateElement.textContent = now.toLocaleDateString('es-ES', options);
 }
 
-// 5. MENÚ HAMBURGUESA PARA MÓVILES
+// 7. MENÚ HAMBURGUESA
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.querySelector('.nav-links');
 
 if (hamburger && navLinks) {
     hamburger.addEventListener('click', () => {
         navLinks.classList.toggle('active');
-        
-        // Cambiar el icono de hamburguesa a una 'X'
         const icon = hamburger.querySelector('i');
         if (navLinks.classList.contains('active')) {
-            icon.classList.remove('fa-bars');
-            icon.classList.add('fa-times');
+            icon.classList.replace('fa-bars', 'fa-times');
         } else {
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
+            icon.classList.replace('fa-times', 'fa-bars');
         }
     });
 
-    // Lógica para submenús desplegables en móvil
-    const dropdowns = document.querySelectorAll('.dropdown');
-    dropdowns.forEach(dropdown => {
-        const dropbtn = dropdown.querySelector('.dropbtn');
-        if (dropbtn) {
-            dropbtn.addEventListener('click', (e) => {
-                if (window.getComputedStyle(hamburger).display === 'block') {
-                    e.preventDefault();
-                    dropdown.classList.toggle('mobile-expanded');
-                }
-            });
-        }
-    });
-
-    // Cerrar el menú al hacer clic en un enlace (que no sea el botón del dropdown)
     document.querySelectorAll('.nav-links li a').forEach(link => {
         if (!link.classList.contains('dropbtn')) {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
                 const icon = hamburger.querySelector('i');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-                dropdowns.forEach(d => d.classList.remove('mobile-expanded'));
+                icon.classList.replace('fa-times', 'fa-bars');
             });
         }
     });
 }
 
-// 6. MANEJO DE ENVÍO DE FORMULARIO DE CONTACTO POR AJAX (FETCH API)
+// 8. FORMULARIO DE CONTACTO
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
     contactForm.addEventListener('submit', async function(e) {
-        e.preventDefault(); // Evita que la página se recargue o redirija
-        
+        e.preventDefault();
         const formStatus = document.getElementById('formStatus');
         const btnText = document.getElementById('btnText');
         const btnSpinner = document.getElementById('btnSpinner');
         const submitBtn = contactForm.querySelector('button[type="submit"]');
         
-        // Mostrar estado de carga
         btnText.textContent = 'Enviando...';
         btnSpinner.style.display = 'inline-block';
         submitBtn.disabled = true;
-        formStatus.style.display = 'none';
 
         try {
             const formData = new FormData(contactForm);
-            
-            // Usando FormSubmit con Fetch
             const response = await fetch(contactForm.action, {
                 method: 'POST',
                 body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
+                headers: { 'Accept': 'application/json' }
             });
 
             if (response.ok) {
-                // Éxito
-                formStatus.textContent = '✅ ¡Tu mensaje ha sido enviado con éxito! Nos pondremos en contacto pronto.';
-                formStatus.style.color = '#25d366'; // Verde WhatsApp
-                formStatus.style.backgroundColor = 'rgba(37, 211, 102, 0.1)';
-                formStatus.style.border = '1px solid rgba(37, 211, 102, 0.3)';
+                formStatus.textContent = '✅ ¡Mensaje enviado con éxito!';
                 formStatus.style.display = 'block';
-                contactForm.reset(); // Limpiar el formulario
+                contactForm.reset();
             } else {
-                throw new Error('Error en el servidor al enviar');
+                throw new Error('Error');
             }
         } catch (error) {
-            // Error
-            formStatus.textContent = '❌ Hubo un problema al enviar tu mensaje. Por favor, intenta de nuevo o contáctanos por WhatsApp.';
-            formStatus.style.color = '#ef4444'; // Rojo
-            formStatus.style.backgroundColor = 'rgba(239, 68, 68, 0.1)';
-            formStatus.style.border = '1px solid rgba(239, 68, 68, 0.3)';
+            formStatus.textContent = '❌ Error al enviar el mensaje.';
             formStatus.style.display = 'block';
         } finally {
-            // Restaurar el botón
             btnText.textContent = 'Enviar Mensaje';
             btnSpinner.style.display = 'none';
             submitBtn.disabled = false;
@@ -216,402 +170,239 @@ if (contactForm) {
     });
 }
 
-// 7. CARGA DE PRECIOS DESDE GOOGLE SHEETS
-// Tu clienta debe publicar su Google Sheet como CSV y pegar el enlace aquí dentro de las comillas:
+// 9. CARGA DE PRECIOS GOOGLE SHEETS
 const GOOGLE_SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRb7Kq96nJhPkVBaredYV2CkPCpKKlkIyXmOio0JOL5DCQZHvIXPrAuYIvWdepbcsMKzmyywYEMn75G/pub?output=csv';
 
-// Precios por defecto en caso de que falle la carga
-window.fuelPrices = {
-    regular: 15.40,
-    premium: 17.80,
-    diesel: 16.20,
-    glp: 7.50
-};
+window.fuelPrices = { regular: 15.40, premium: 17.80, diesel: 16.20, glp: 7.50 };
 
 async function loadPrices() {
-    if (!GOOGLE_SHEET_CSV_URL || GOOGLE_SHEET_CSV_URL === '') {
-        updateCalculator();
-        return;
-    }
-
+    if (!GOOGLE_SHEET_CSV_URL) return;
     try {
-        // Añadimos un parámetro de tiempo para evitar que el navegador guarde en caché el precio viejo
-        const urlPura = GOOGLE_SHEET_CSV_URL + '&t=' + new Date().getTime();
-        const response = await fetch(urlPura);
-        if (!response.ok) throw new Error('No se pudo cargar el CSV');
-        
+        const response = await fetch(GOOGLE_SHEET_CSV_URL + '&t=' + new Date().getTime());
         const data = await response.text();
         const rows = data.split('\n');
-        
-        // Asumimos que la fila 1 (índice 0) son los títulos
         for (let i = 1; i < rows.length; i++) {
             const cols = rows[i].split(',');
             if (cols.length >= 2) {
-                const combustible = cols[0].trim().toLowerCase();
-                const precio = parseFloat(cols[1].trim()).toFixed(2);
+                const fuel = cols[0].trim().toLowerCase();
+                const price = parseFloat(cols[1].trim()).toFixed(2);
                 
-                if (combustible.includes('regular') && document.getElementById('price-regular')) {
-                    document.getElementById('price-regular').textContent = precio;
-                    if (document.getElementById('totem-price-regular')) {
-                        document.getElementById('totem-price-regular').textContent = precio;
-                    }
-                    window.fuelPrices.regular = parseFloat(precio);
-                }
-                else if (combustible.includes('premium') && document.getElementById('price-premium')) {
-                    document.getElementById('price-premium').textContent = precio;
-                    if (document.getElementById('totem-price-premium')) {
-                        document.getElementById('totem-price-premium').textContent = precio;
-                    }
-                    window.fuelPrices.premium = parseFloat(precio);
-                }
-                else if (combustible.includes('diesel') && document.getElementById('price-diesel')) {
-                    document.getElementById('price-diesel').textContent = precio;
-                    if (document.getElementById('totem-price-diesel')) {
-                        document.getElementById('totem-price-diesel').textContent = precio;
-                    }
-                    window.fuelPrices.diesel = parseFloat(precio);
-                }
-                else if (combustible.includes('glp') && document.getElementById('price-glp')) {
-                    document.getElementById('price-glp').textContent = precio;
-                    if (document.getElementById('totem-price-glp')) {
-                        document.getElementById('totem-price-glp').textContent = precio;
-                    }
-                    window.fuelPrices.glp = parseFloat(precio);
+                if (fuel.includes('regular')) {
+                    if (document.getElementById('price-regular')) document.getElementById('price-regular').textContent = price;
+                    if (document.getElementById('totem-price-regular')) document.getElementById('totem-price-regular').textContent = price;
+                    window.fuelPrices.regular = parseFloat(price);
+                } else if (fuel.includes('premium')) {
+                    if (document.getElementById('price-premium')) document.getElementById('price-premium').textContent = price;
+                    if (document.getElementById('totem-price-premium')) document.getElementById('totem-price-premium').textContent = price;
+                    window.fuelPrices.premium = parseFloat(price);
+                } else if (fuel.includes('diesel')) {
+                    if (document.getElementById('price-diesel')) document.getElementById('price-diesel').textContent = price;
+                    if (document.getElementById('totem-price-diesel')) document.getElementById('totem-price-diesel').textContent = price;
+                    window.fuelPrices.diesel = parseFloat(price);
+                } else if (fuel.includes('glp')) {
+                    if (document.getElementById('price-glp')) document.getElementById('price-glp').textContent = price;
+                    if (document.getElementById('totem-price-glp')) document.getElementById('totem-price-glp').textContent = price;
+                    window.fuelPrices.glp = parseFloat(price);
                 }
             }
         }
-    } catch (error) {
-        console.error('Error al cargar los precios desde Google Sheets:', error);
-    } finally {
-        updateCalculator();
-    }
+    } catch (e) { console.error('Error precios:', e); }
 }
 
-// 8. LOGICA DE LA CALCULADORA DE COMBUSTIBLE
-const calcFuel = document.getElementById('calc-fuel');
-const calcMoney = document.getElementById('calc-money');
-const calcGallons = document.getElementById('calc-gallons');
-
+// 10. CALCULADORA DE COMBUSTIBLE (PAGINA INICIO)
 function updateCalculator() {
+    const calcFuel = document.getElementById('calc-fuel');
+    const calcMoney = document.getElementById('calc-money');
+    const calcGallons = document.getElementById('calc-gallons');
     if (!calcFuel || !calcMoney || !calcGallons) return;
     
-    const fuelType = calcFuel.value;
-    const moneyStr = calcMoney.value;
+    const money = parseFloat(calcMoney.value);
+    if (isNaN(money)) { calcGallons.textContent = '0.00'; return; }
     
-    if (moneyStr === '' || isNaN(parseFloat(moneyStr))) {
-        calcGallons.textContent = '0.00';
-        return;
-    }
-    
-    const money = parseFloat(moneyStr);
-    const pricePerGallon = window.fuelPrices[fuelType];
-    
-    if (pricePerGallon > 0) {
-        const gallons = (money / pricePerGallon).toFixed(2);
-        calcGallons.textContent = gallons;
-    }
+    const price = window.fuelPrices[calcFuel.value];
+    calcGallons.textContent = (money / price).toFixed(2);
 }
 
+const calcFuel = document.getElementById('calc-fuel');
+const calcMoney = document.getElementById('calc-money');
 if (calcFuel && calcMoney) {
     calcFuel.addEventListener('change', updateCalculator);
     calcMoney.addEventListener('input', updateCalculator);
 }
 
-// 9. TOAST DE BIENVENIDA
+// 11. TOAST DE BIENVENIDA
 function showWelcomeToast() {
     const toast = document.getElementById('welcome-toast');
-    const closeBtn = document.getElementById('close-toast');
-    
-    if (toast && closeBtn) {
-        // Mostrar después de 2 segundos
+    if (toast) {
         setTimeout(() => {
             toast.classList.add('show');
-            
-            // Ocultar automáticamente después de 6 segundos
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 6000);
-            
+            setTimeout(() => toast.classList.remove('show'), 6000);
         }, 2000);
-        
-        // Cerrar al hacer clic en X
-        closeBtn.addEventListener('click', () => {
-            toast.classList.remove('show');
-        });
+        document.getElementById('close-toast')?.addEventListener('click', () => toast.classList.remove('show'));
     }
 }
 
-// Llamar a las funciones al cargar la página
+// 12. PRELOADER Y CARGA INICIAL
+function removePreloader() {
+    const preloader = document.getElementById('preloader');
+    if (preloader && !preloader.classList.contains('hidden')) {
+        preloader.classList.add('hidden');
+    }
+}
+
+// Inicialización consolidada
 document.addEventListener('DOMContentLoaded', () => {
     loadPrices();
-    showWelcomeToast();
+    setupBackToTop();
+    setupRouteCalculator();
+    setupWhatsAppWidget();
+    fetchNews();
+    setTimeout(showWelcomeToast, 2000);
+    setTimeout(removePreloader, 4000); // Seguro de 4 segundos
 });
 
-// 10. PRELOADER
-window.addEventListener('load', () => {
-    const preloader = document.getElementById('preloader');
-    if (preloader) {
-        setTimeout(() => {
-            preloader.classList.add('hidden');
-        }, 800);
-    }
-});
+window.addEventListener('load', removePreloader);
 
-// 11. CARRUSEL DE TESTIMONIOS
+// 13. CARRUSEL DE TESTIMONIOS
 let currentSlide = 0;
-const track = document.getElementById('testimonial-track');
-const dots = document.querySelectorAll('.carousel-dots .dot');
-
 function moveCarousel(index) {
+    const track = document.getElementById('testimonial-track');
+    const dots = document.querySelectorAll('.carousel-dots .dot');
     if (!track || dots.length === 0) return;
-    
     currentSlide = index;
     track.style.transform = `translateX(-${currentSlide * 100}%)`;
-    
     dots.forEach(dot => dot.classList.remove('active'));
     dots[currentSlide].classList.add('active');
 }
 
-// Auto-play del carrusel
-if (track && dots.length > 0) {
+const track = document.getElementById('testimonial-track');
+if (track) {
     setInterval(() => {
-        let nextSlide = (currentSlide + 1) % dots.length;
-        moveCarousel(nextSlide);
+        const dots = document.querySelectorAll('.carousel-dots .dot');
+        if (dots.length > 0) moveCarousel((currentSlide + 1) % dots.length);
     }, 5000);
 }
 
-// 12. MODAL DE FACTURACIÓN
-const billingModal = document.getElementById('billing-modal');
+// 14. MODAL DE FACTURACIÓN
+function openBillingModal() { document.getElementById('billing-modal').style.display = 'block'; }
+function closeBillingModal() { document.getElementById('billing-modal').style.display = 'none'; }
+window.addEventListener('click', (e) => { if (e.target.id === 'billing-modal') closeBillingModal(); });
 
-function openBillingModal() {
-    if (billingModal) {
-        billingModal.style.display = 'block';
-    }
-}
-
-function closeBillingModal() {
-    if (billingModal) {
-        billingModal.style.display = 'none';
-    }
-}
-
-// Cerrar modal al hacer clic fuera de él
-window.addEventListener('click', (event) => {
-    if (event.target === billingModal) {
-        closeBillingModal();
-    }
-});
-
-// Envío del formulario de facturación por AJAX
 const billingForm = document.getElementById('billingForm');
 if (billingForm) {
     billingForm.addEventListener('submit', async function(e) {
         e.preventDefault();
-        
         const btn = billingForm.querySelector('button[type="submit"]');
         const status = document.getElementById('billingStatus');
-        
         btn.textContent = 'Enviando...';
         btn.disabled = true;
-        status.style.display = 'none';
-
         try {
-            const formData = new FormData(billingForm);
             const response = await fetch(billingForm.action, {
                 method: 'POST',
-                body: formData,
+                body: new FormData(billingForm),
                 headers: { 'Accept': 'application/json' }
             });
-
             if (response.ok) {
-                status.textContent = '✅ ¡Solicitud enviada! Pronto te llegará la factura al correo/WhatsApp registrado.';
-                status.style.color = '#25d366';
-                status.style.backgroundColor = 'rgba(37, 211, 102, 0.1)';
+                status.textContent = '✅ Solicitud enviada.';
                 status.style.display = 'block';
                 billingForm.reset();
-                setTimeout(closeBillingModal, 4000); // Cerrar después de 4 seg
-            } else {
-                throw new Error('Error de servidor');
+                setTimeout(closeBillingModal, 3000);
             }
-        } catch (error) {
-            status.textContent = '❌ Hubo un error al enviar. Por favor, intenta de nuevo.';
-            status.style.color = '#ef4444';
-            status.style.backgroundColor = 'rgba(239, 68, 68, 0.1)';
-            status.style.display = 'block';
-        } finally {
-            btn.textContent = 'Enviar Solicitud';
-            btn.disabled = false;
-        }
+        } catch (e) { status.textContent = '❌ Error.'; status.style.display = 'block'; }
+        finally { btn.textContent = 'Enviar Solicitud'; btn.disabled = false; }
     });
 }
 
-
-// 14. GUÍA INTERACTIVA DE COMBUSTIBLES
+// 15. RECOMENDADOR
 function recommendFuel(type) {
     const title = document.getElementById('rec-title');
     const desc = document.getElementById('rec-desc');
     const icon = document.getElementById('rec-icon');
-    const buttons = document.querySelectorAll('.recommender-btn');
+    if (!title) return;
     
-    // Resetear botones
-    buttons.forEach(btn => {
-        btn.style.background = 'transparent';
-        btn.style.borderColor = 'var(--glass-border)';
-        btn.style.color = 'var(--text-dim)';
-        btn.classList.remove('active');
-    });
-    
-    // Activar botón seleccionado
-    event.currentTarget.style.borderColor = 'var(--primary)';
-    event.currentTarget.style.color = 'white';
+    document.querySelectorAll('.recommender-btn').forEach(btn => btn.classList.remove('active'));
     event.currentTarget.classList.add('active');
     
-    // Actualizar contenido
     if (type === 'compacto') {
         title.innerHTML = 'Recomendamos: <span style="color: var(--primary);">Regular (G-Regular)</span>';
-        desc.textContent = 'Ideal para motores de uso diario en la ciudad. Ayuda a mantener limpios los inyectores y proporciona un rendimiento económico y eficiente para tus trayectos cotidianos en Huancayo.';
+        desc.textContent = 'Ideal para motores de uso diario en la ciudad.';
         icon.className = 'fas fa-car';
     } else if (type === 'deportivo') {
         title.innerHTML = 'Recomendamos: <span style="color: var(--primary);">Premium (G-Premium)</span>';
-        desc.textContent = 'Para motores modernos, turboalimentados o de alta exigencia. Maximiza la potencia, protege contra la fricción y limpia el motor para que rinda al máximo en carreteras.';
+        desc.textContent = 'Para motores modernos o de alta exigencia.';
         icon.className = 'fas fa-tachometer-alt';
     } else if (type === 'trabajo') {
         title.innerHTML = 'Recomendamos: <span style="color: var(--primary);">Diesel o GLP</span>';
-        desc.textContent = 'El Diesel DB5 S-50 cuida los motores de carga pesada reduciendo el desgaste. Si usas auto dual, el GLP te dará el mayor ahorro mensual sin perder potencia en la altura.';
+        desc.textContent = 'El Diesel DB5 S-50 cuida motores de carga.';
         icon.className = 'fas fa-truck-pickup';
     }
 }
 
-// 15. BOTÓN VOLVER ARRIBA
-function setupBackToTop() {
-    const backToTopBtn = document.getElementById('back-to-top');
-    if (backToTopBtn) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 500) {
-                backToTopBtn.style.display = 'flex';
-                backToTopBtn.style.opacity = '1';
-            } else {
-                backToTopBtn.style.opacity = '0';
-                setTimeout(() => {
-                    if (window.scrollY <= 500) backToTopBtn.style.display = 'none';
-                }, 300);
-            }
-        });
-    }
-}
-
-// 16. FEED AUTOMÁTICO DE NOTICIAS
+// 16. NOTICIAS
 async function fetchNews() {
     const container = document.getElementById('news-container');
     if (!container) return;
-
-    // Buscamos noticias sobre combustibles en Perú usando Google News RSS
     const rssUrl = 'https://news.google.com/rss/search?q=combustibles+peru+petroleo&hl=es-419&gl=PE&ceid=PE:es-419';
     const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
-
     try {
-        const response = await fetch(apiUrl);
-        const data = await response.json();
-
+        const res = await fetch(apiUrl);
+        const data = await res.json();
         if (data.status === 'ok') {
-            container.innerHTML = ''; 
-            
-            // Imágenes de respaldo variadas sobre combustibles y energía
+            container.innerHTML = '';
             const fallbackImages = [
-                'https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&q=80&w=1000', // Manguera combustible
-                'https://images.unsplash.com/photo-1620067634310-998822538198?auto=format&fit=crop&q=80&w=1000', // Refinería
-                'https://images.unsplash.com/photo-1542281286-9e0a16bb7366?auto=format&fit=crop&q=80&w=1000', // Carretera/Ciudad
-                'https://images.unsplash.com/photo-1559441115-46729517b686?auto=format&fit=crop&q=80&w=1000', // Gasolinera noche
-                'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=1000'  // Petróleo
+                'https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&q=80&w=1000',
+                'https://images.unsplash.com/photo-1620067634310-998822538198?auto=format&fit=crop&q=80&w=1000',
+                'https://images.unsplash.com/photo-1542281286-9e0a16bb7366?auto=format&fit=crop&q=80&w=1000'
             ];
-
-            data.items.slice(0, 3).forEach((item, index) => {
-                const date = new Date(item.pubDate).toLocaleDateString('es-ES', {
-                    day: '2-digit',
-                    month: 'short',
-                    year: 'numeric'
-                });
-
-                // Si no hay thumbnail, usamos una de nuestra lista rotativa
-                const thumbnail = item.thumbnail || fallbackImages[index % fallbackImages.length];
-
-                const card = `
+            data.items.slice(0, 3).forEach((item, i) => {
+                const date = new Date(item.pubDate).toLocaleDateString('es-ES', { day: '2-digit', month: 'short' });
+                const thumb = item.thumbnail || fallbackImages[i % fallbackImages.length];
+                container.innerHTML += `
                     <article class="news-card">
-                        <img src="${thumbnail}" alt="${item.title}" class="news-img" onerror="this.src='${fallbackImages[index % fallbackImages.length]}'">
+                        <img src="${thumb}" class="news-img">
                         <div class="news-body">
                             <span class="news-date">${date}</span>
                             <h3>${item.title}</h3>
-                            <p>${item.description.replace(/<[^>]*>?/gm, '').substring(0, 150)}...</p>
-                            <a href="${item.link}" target="_blank" class="news-link">Leer noticia completa <i class="fas fa-arrow-right"></i></a>
+                            <p>${item.description.replace(/<[^>]*>?/gm, '').substring(0, 100)}...</p>
+                            <a href="${item.link}" target="_blank" class="news-link">Leer más <i class="fas fa-arrow-right"></i></a>
                         </div>
-                    </article>
-                `;
-                container.innerHTML += card;
+                    </article>`;
             });
-        } else {
-            throw new Error('No se pudieron cargar las noticias');
         }
-    } catch (error) {
-        container.innerHTML = `
-            <div style="grid-column: 1/-1; text-align: center; color: var(--text-dim);">
-                <p>No pudimos cargar las noticias automáticamente en este momento.</p>
-                <a href="https://www.google.com/search?q=combustibles+peru+noticias" target="_blank" class="btn-primary" style="margin-top: 1rem; display: inline-block;">Ver noticias en Google</a>
-            </div>
-        `;
-    }
+    } catch (e) { container.innerHTML = '<p>Error al cargar noticias.</p>'; }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    setupBackToTop();
-    fetchNews();
-    setupRouteCalculator();
-    setupWhatsAppWidget();
-});
-
-// 17. LÓGICA DE LA CALCULADORA DE RUTA
+// 17. CALCULADORA DE RUTA
 function setupRouteCalculator() {
-    const destSelect = document.getElementById('route-destination');
-    const vehicleSelect = document.getElementById('route-vehicle');
-    const gallonsDisplay = document.getElementById('route-gallons');
-    const costDisplay = document.getElementById('route-cost');
-
-    if (!destSelect || !vehicleSelect) return;
-
-    function updateRouteCalc() {
-        const distance = parseFloat(destSelect.value);
-        const efficiency = parseFloat(vehicleSelect.value);
-        const price = window.fuelPrices.regular; // Usamos el precio de Regular por defecto
-
-        const gallonsNeeded = (distance / efficiency).toFixed(2);
-        const totalCost = (gallonsNeeded * price).toFixed(2);
-
-        gallonsDisplay.textContent = gallonsNeeded;
-        costDisplay.textContent = `S/ ${totalCost}`;
-    }
-
-    destSelect.addEventListener('change', updateRouteCalc);
-    vehicleSelect.addEventListener('change', updateRouteCalc);
-    
-    // Inicializar
-    updateRouteCalc();
+    const dest = document.getElementById('route-destination');
+    const vehicle = document.getElementById('route-vehicle');
+    if (!dest || !vehicle) return;
+    const update = () => {
+        const dist = parseFloat(dest.value);
+        const eff = parseFloat(vehicle.value);
+        const price = window.fuelPrices.regular;
+        const gal = (dist / eff).toFixed(2);
+        document.getElementById('route-gallons').textContent = gal;
+        document.getElementById('route-cost').textContent = `S/ ${(gal * price).toFixed(2)}`;
+    };
+    dest.addEventListener('change', update);
+    vehicle.addEventListener('change', update);
+    update();
 }
 
-// 18. LÓGICA DEL CHATBOT DE WHATSAPP
+// 18. WHATSAPP WIDGET
 function setupWhatsAppWidget() {
-    const waToggle = document.getElementById('wa-toggle');
-    const waMenu = document.getElementById('wa-menu');
+    const btn = document.getElementById('wa-toggle');
+    const menu = document.getElementById('wa-menu');
+    if (!btn || !menu) return;
+    btn.addEventListener('click', (e) => { e.stopPropagation(); menu.classList.toggle('active'); });
+    document.addEventListener('click', (e) => { if (!menu.contains(e.target) && !btn.contains(e.target)) menu.classList.remove('active'); });
+}
 
-    if (waToggle && waMenu) {
-        waToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            waMenu.classList.toggle('active');
-        });
-
-        // Cerrar al hacer clic fuera
-        document.addEventListener('click', (e) => {
-            if (!waMenu.contains(e.target) && !waToggle.contains(e.target)) {
-                waMenu.classList.remove('active');
-            }
-        });
-    }
+function setupBackToTop() {
+    const btn = document.getElementById('back-to-top');
+    if (!btn) return;
+    window.addEventListener('scroll', () => {
+        btn.style.display = window.scrollY > 500 ? 'flex' : 'none';
+    });
 }

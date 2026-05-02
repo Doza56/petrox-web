@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería Momentos Petrox | San Sebastián</title>
+    <meta name="description" content="Explora los momentos más especiales de la Estación Petrox San Sebastián en Huancayo. Nuestra estación, equipo y guardianes.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <script src="https://kit.fontawesome.com/e674bba739.js" crossorigin="anonymous" defer></script>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header id="header" style="background: rgba(10, 10, 11, 0.98);">
+        <div class="logo">
+            <a href="index.html"><img src="img/logo.png" alt="Petrox San Sebastian"></a>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="index.html#prices">Precios</a></li>
+                <li><a href="index.html#promotions">Promociones</a></li>
+                <li class="dropdown">
+                    <a href="index.html#about" class="dropbtn">Nosotros <i class="fas fa-chevron-down"
+                            style="font-size: 0.7rem;"></i></a>
+                    <div class="dropdown-content">
+                        <a href="index.html#about">Nuestra Identidad</a>
+                        <a href="equipo.html">Nuestro Equipo</a>
+                        <a href="equipo.html#guardians">Guardianes</a>
+                    </div>
+                </li>
+                <li><a href="index.html#news">Noticias</a></li>
+                <li><a href="galeria.html" class="active">Galería</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+        <div class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <main style="padding-top: 100px;">
+        <!-- GALERÍA MOMENTOS PETROX -->
+        <section id="gallery" style="padding: 100px 10%; background: #0a0a0b;">
+            <div class="section-title">
+                <h1 style="color: var(--primary); font-size: 3.5rem;">Momentos Petrox</h1>
+                <p>Nuestra estación, nuestro equipo y los guardianes que nos cuidan día a día.</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item"><img src="img/estacion.jpg" alt="Estación Petrox"></div>
+                <div class="gallery-item"><img src="img/chato.jpeg" alt="Chato Guardian"></div>
+                <div class="gallery-item"><img src="img/boby.jpeg" alt="Boby Guardian"></div>
+                <div class="gallery-item"><img src="img/estacion2.png" alt="Petrox de Noche"></div>
+                <div class="gallery-item"><img src="img/chiki.jpeg" alt="Chiki Guardian"></div>
+                <div class="gallery-item"><img src="img/estrella.jpeg" alt="Estrella"></div>
+                <!-- Añadimos más espacios para futuras fotos -->
+                <div class="gallery-item"><img src="img/hero.png" alt="Petrox"></div>
+                <div class="gallery-item"><img src="img/maria.png" alt="María Navarro"></div>
+                <div class="gallery-item"><img src="img/gonzalo.jpg" alt="Gonzalo Espinoza"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="footer">
+        <div style="text-align: center; color: var(--text-dim); font-size: 0.8rem; padding: 2rem;">
+            <p>&copy; 2026 Petrox San Sebastián S.A.C. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- CHATBOT WHATSAPP INTELIGENTE -->
+    <div id="whatsapp-widget" class="wa-widget">
+        <div id="wa-menu" class="wa-menu">
+            <div class="wa-header">
+                <img src="img/logo.png" alt="Petrox Logo">
+                <div class="wa-header-text">
+                    <strong>Petrox San Sebastián</strong>
+                    <span>¿En qué podemos ayudarte?</span>
+                </div>
+            </div>
+            <div class="wa-options">
+                <a href="https://wa.me/51964177728?text=Hola,%20deseo%20solicitar%20una%20factura." target="_blank" class="wa-option">
+                    <i class="fas fa-file-invoice"></i> Solicitar Factura
+                </a>
+                <a href="https://wa.me/51964177728?text=Hola,%20quisiera%20saber%20los%20precios%20de%20combustible%20de%20hoy." target="_blank" class="wa-option">
+                    <i class="fas fa-gas-pump"></i> Ver Precios de Hoy
+                </a>
+                <a href="https://wa.me/51964177728?text=Hola,%20quisiera%20más%20información%20sobre%20convenios%20de%20flotas." target="_blank" class="wa-option">
+                    <i class="fas fa-truck-moving"></i> Convenios de Flotas
+                </a>
+                <a href="https://wa.me/51964177728?text=Hola,%20tengo%20una%20consulta." target="_blank" class="wa-option wa-primary">
+                    <i class="fab fa-whatsapp"></i> Hablar con Asesor
+                </a>
+            </div>
+        </div>
+        <button id="wa-toggle" class="wa-btn">
+            <i class="fab fa-whatsapp"></i>
+            <span class="wa-badge">1</span>
+        </button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
