@@ -12,7 +12,9 @@
     <!-- Fuentes: Outfit (Principal) y Orbitron (Digital para Totem) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Orbitron:wght@400;700&display=swap"
+        rel="stylesheet">
 
     <!-- Enlace a la hoja de estilos personalizada -->
     <link rel="stylesheet" href="style.css">
@@ -53,8 +55,11 @@
     <!-- PRELOADER -->
     <div id="preloader">
         <div class="loader-content">
-            <img src="img/logo.png" alt="Petrox" style="height: 80px; animation: pulse 1.5s infinite; filter: drop-shadow(0 0 10px rgba(255, 95, 0, 0.5));">
-            <p style="color: var(--primary); font-size: 0.8rem; letter-spacing: 2px; margin-top: 1rem; font-weight: 600;">CARGANDO...</p>
+            <img src="img/logo.png" alt="Petrox"
+                style="height: 80px; animation: pulse 1.5s infinite; filter: drop-shadow(0 0 10px rgba(255, 95, 0, 0.5));">
+            <p
+                style="color: var(--primary); font-size: 0.8rem; letter-spacing: 2px; margin-top: 1rem; font-weight: 600;">
+                CARGANDO...</p>
         </div>
     </div>
 
@@ -122,8 +127,11 @@
                     <a href="#about"
                         style="margin-left: 20px; color: white; border-bottom: 2px solid var(--primary); padding-bottom: 5px;">Conócenos</a>
                     <div style="margin-top: 2rem; display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
-                        <a href="https://waze.com/ul?ll=-12.029630,-75.188350&navigate=yes" target="_blank" class="btn-nav waze-btn"><i class="fab fa-waze"></i> Ir con Waze</a>
-                        <a href="https://www.google.com/maps/dir/?api=1&destination=-12.029630,-75.188350" target="_blank" class="btn-nav maps-btn"><i class="fas fa-map-marker-alt"></i> Ir con Maps</a>
+                        <a href="https://waze.com/ul?ll=-12.029630,-75.188350&navigate=yes" target="_blank"
+                            class="btn-nav waze-btn"><i class="fab fa-waze"></i> Ir con Waze</a>
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=-12.029630,-75.188350"
+                            target="_blank" class="btn-nav maps-btn"><i class="fas fa-map-marker-alt"></i> Ir con
+                            Maps</a>
                     </div>
                 </div>
             </div>
@@ -203,7 +211,8 @@
                                 <div style="font-size: 0.75rem; color: var(--text-dim);">G-Regular</div>
                             </div>
                         </div>
-                        <div class="fuel-price"><span class="currency">S/</span> <span id="price-regular">15.40</span></div>
+                        <div class="fuel-price"><span class="currency">S/</span> <span id="price-regular">15.40</span>
+                        </div>
                     </div>
                     <div class="fuel-description">
                         <div class="fuel-description-content">
@@ -228,7 +237,8 @@
                                 <div style="font-size: 0.75rem; color: var(--text-dim);">G-Premium</div>
                             </div>
                         </div>
-                        <div class="fuel-price"><span class="currency">S/</span> <span id="price-premium">17.80</span></div>
+                        <div class="fuel-price"><span class="currency">S/</span> <span id="price-premium">17.80</span>
+                        </div>
                     </div>
                     <div class="fuel-description">
                         <div class="fuel-description-content">
@@ -253,7 +263,8 @@
                                 <div style="font-size: 0.75rem; color: var(--text-dim);">DB5 S-50</div>
                             </div>
                         </div>
-                        <div class="fuel-price"><span class="currency">S/</span> <span id="price-diesel">16.20</span></div>
+                        <div class="fuel-price"><span class="currency">S/</span> <span id="price-diesel">16.20</span>
+                        </div>
                     </div>
                     <div class="fuel-description">
                         <div class="fuel-description-content">
@@ -278,7 +289,8 @@
                                 <div style="font-size: 0.75rem; color: var(--text-dim);">Gas Automotriz</div>
                             </div>
                         </div>
-                        <div class="fuel-price" style="color: var(--accent);"><span class="currency">S/</span> <span id="price-glp">7.50</span>
+                        <div class="fuel-price" style="color: var(--accent);"><span class="currency">S/</span> <span
+                                id="price-glp">7.50</span>
                         </div>
                     </div>
                     <div class="fuel-description">
@@ -298,16 +310,22 @@
 
         <!-- CALCULADORA DE COMBUSTIBLE -->
         <section id="calculator" style="padding: 80px 10%; background: #0f0f12;">
-            <div class="calculator-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 4rem; align-items: center;">
+            <div class="calculator-container"
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 4rem; align-items: center;">
                 <div class="calculator-info">
                     <h2 style="color: var(--primary); font-size: 2.2rem; margin-bottom: 1rem;">Calculadora de Carga</h2>
-                    <p style="color: var(--text-dim); margin-bottom: 2rem;">Calcula exactamente cuánto combustible recibirás por tu dinero basándonos en nuestros precios actualizados de hoy.</p>
+                    <p style="color: var(--text-dim); margin-bottom: 2rem;">Calcula exactamente cuánto combustible
+                        recibirás por tu dinero basándonos en nuestros precios actualizados de hoy.</p>
                     <i class="fas fa-calculator" style="font-size: 5rem; color: rgba(255, 95, 0, 0.1);"></i>
                 </div>
-                <div class="calculator-box" style="background: var(--glass-bg); padding: 2.5rem; border-radius: 24px; border: 1px solid var(--glass-border);">
+                <div class="calculator-box"
+                    style="background: var(--glass-bg); padding: 2.5rem; border-radius: 24px; border: 1px solid var(--glass-border);">
                     <div class="form-group">
-                        <label style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 0.5rem; display: block;">Tipo de Combustible</label>
-                        <select id="calc-fuel" style="width: 100%; padding: 1rem; border-radius: 12px; background: rgba(255,255,255,0.05); color: white; border: 1px solid var(--glass-border); outline: none;">
+                        <label
+                            style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 0.5rem; display: block;">Tipo
+                            de Combustible</label>
+                        <select id="calc-fuel"
+                            style="width: 100%; padding: 1rem; border-radius: 12px; background: rgba(255,255,255,0.05); color: white; border: 1px solid var(--glass-border); outline: none;">
                             <option value="regular" style="color: black;">Regular (G-Regular)</option>
                             <option value="premium" style="color: black;">Premium (G-Premium)</option>
                             <option value="diesel" style="color: black;">Diesel (DB5 S-50)</option>
@@ -315,37 +333,55 @@
                         </select>
                     </div>
                     <div class="form-group" style="margin-top: 1.5rem;">
-                        <label style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 0.5rem; display: block;">¿Cuánto deseas cargar? (Soles)</label>
+                        <label
+                            style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 0.5rem; display: block;">¿Cuánto
+                            deseas cargar? (Soles)</label>
                         <div style="position: relative;">
-                            <span style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-dim);">S/</span>
-                            <input type="number" id="calc-money" placeholder="Ej. 50" min="1" step="1" style="width: 100%; padding: 1rem 1rem 1rem 2.5rem; border-radius: 12px; background: rgba(255,255,255,0.05); color: white; border: 1px solid var(--glass-border); outline: none;">
+                            <span
+                                style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-dim);">S/</span>
+                            <input type="number" id="calc-money" placeholder="Ej. 50" min="1" step="1"
+                                style="width: 100%; padding: 1rem 1rem 1rem 2.5rem; border-radius: 12px; background: rgba(255,255,255,0.05); color: white; border: 1px solid var(--glass-border); outline: none;">
                         </div>
                     </div>
                     <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px dashed var(--glass-border);">
                         <span style="color: var(--text-dim); font-size: 0.9rem;">Recibirás aproximadamente:</span>
-                        <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary);"><span id="calc-gallons">0.00</span> <small style="font-size: 1rem; color: var(--text-dim);">Galones</small></div>
+                        <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary);"><span
+                                id="calc-gallons">0.00</span> <small
+                                style="font-size: 1rem; color: var(--text-dim);">Galones</small></div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- GUÍA INTERACTIVA DE COMBUSTIBLES -->
-        <section id="recommender" style="padding: 60px 10%; background: var(--bg-dark); border-top: 1px solid var(--glass-border);">
+        <section id="recommender"
+            style="padding: 60px 10%; background: var(--bg-dark); border-top: 1px solid var(--glass-border);">
             <div class="section-title" style="margin-bottom: 2rem;">
                 <h2 style="color: var(--primary);">Elige tu Combustible Ideal</h2>
                 <p>Descubre qué combustible optimiza el rendimiento de tu motor.</p>
             </div>
-            
+
             <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem;">
-                <button class="btn-primary recommender-btn active" onclick="recommendFuel('compacto')" style="background: transparent; border: 1px solid var(--primary); color: white;">Auto Compacto</button>
-                <button class="btn-primary recommender-btn" onclick="recommendFuel('deportivo')" style="background: transparent; border: 1px solid var(--glass-border); color: var(--text-dim);">Deportivo / SUV</button>
-                <button class="btn-primary recommender-btn" onclick="recommendFuel('trabajo')" style="background: transparent; border: 1px solid var(--glass-border); color: var(--text-dim);">Transporte Público</button>
+                <button class="btn-primary recommender-btn active" onclick="recommendFuel('compacto')"
+                    style="background: transparent; border: 1px solid var(--primary); color: white;">Auto
+                    Compacto</button>
+                <button class="btn-primary recommender-btn" onclick="recommendFuel('deportivo')"
+                    style="background: transparent; border: 1px solid var(--glass-border); color: var(--text-dim);">Deportivo
+                    / SUV</button>
+                <button class="btn-primary recommender-btn" onclick="recommendFuel('trabajo')"
+                    style="background: transparent; border: 1px solid var(--glass-border); color: var(--text-dim);">Transporte
+                    Público</button>
             </div>
 
-            <div id="recommender-result" style="max-width: 600px; margin: 0 auto; background: var(--glass-bg); padding: 2rem; border-radius: 20px; border: 1px solid var(--primary); text-align: center; transition: all 0.3s ease;">
-                <h3 id="rec-title" style="color: var(--text-main); font-size: 1.5rem; margin-bottom: 1rem;">Recomendamos: <span style="color: var(--primary);">Regular (G-Regular)</span></h3>
-                <p id="rec-desc" style="color: var(--text-dim);">Ideal para motores de uso diario en la ciudad. Ayuda a mantener limpios los inyectores y proporciona un rendimiento económico y eficiente para tus trayectos cotidianos en Huancayo.</p>
-                <i id="rec-icon" class="fas fa-car" style="font-size: 3rem; color: var(--primary); margin-top: 1.5rem; opacity: 0.8;"></i>
+            <div id="recommender-result"
+                style="max-width: 600px; margin: 0 auto; background: var(--glass-bg); padding: 2rem; border-radius: 20px; border: 1px solid var(--primary); text-align: center; transition: all 0.3s ease;">
+                <h3 id="rec-title" style="color: var(--text-main); font-size: 1.5rem; margin-bottom: 1rem;">
+                    Recomendamos: <span style="color: var(--primary);">Regular (G-Regular)</span></h3>
+                <p id="rec-desc" style="color: var(--text-dim);">Ideal para motores de uso diario en la ciudad. Ayuda a
+                    mantener limpios los inyectores y proporciona un rendimiento económico y eficiente para tus
+                    trayectos cotidianos en Huancayo.</p>
+                <i id="rec-icon" class="fas fa-car"
+                    style="font-size: 3rem; color: var(--primary); margin-top: 1.5rem; opacity: 0.8;"></i>
             </div>
         </section>
 
@@ -419,7 +455,8 @@
                 <div class="promo-card" style="border-color: var(--accent);">
                     <h3 style="color: var(--accent);">Atención a Flotas</h3>
                     <p>Descuentos especiales y control de consumo para empresas de transporte.</p>
-                    <a href="contacto.html" class="btn-primary" style="margin-top: 1.5rem; background: var(--accent);">Contactar</a>
+                    <a href="contacto.html" class="btn-primary"
+                        style="margin-top: 1.5rem; background: var(--accent);">Contactar</a>
                 </div>
             </div>
         </section>
@@ -529,7 +566,8 @@
             <div class="carousel-container">
                 <div class="carousel-track" id="testimonial-track">
                     <div class="testimonial-box">
-                        <i class="fas fa-quote-left" style="font-size: 2rem; color: var(--primary); margin-bottom: 1rem;"></i>
+                        <i class="fas fa-quote-left"
+                            style="font-size: 2rem; color: var(--primary); margin-bottom: 1rem;"></i>
                         <p>"Excelente estación, los baños siempre impecables. El combustible rinde mucho más."</p>
                         <div class="client-info" style="margin-top: 1rem;">
                             <strong style="color: var(--primary);">Ricardo Mendoza</strong>
@@ -537,7 +575,8 @@
                         </div>
                     </div>
                     <div class="testimonial-box">
-                        <i class="fas fa-quote-left" style="font-size: 2rem; color: var(--primary); margin-bottom: 1rem;"></i>
+                        <i class="fas fa-quote-left"
+                            style="font-size: 2rem; color: var(--primary); margin-bottom: 1rem;"></i>
                         <p>"Atención rápida las 24 horas. El personal es muy amable incluso de madrugada."</p>
                         <div class="client-info" style="margin-top: 1rem;">
                             <strong style="color: var(--primary);">Sofia Carvajal</strong>
@@ -545,7 +584,8 @@
                         </div>
                     </div>
                     <div class="testimonial-box">
-                        <i class="fas fa-quote-left" style="font-size: 2rem; color: var(--primary); margin-bottom: 1rem;"></i>
+                        <i class="fas fa-quote-left"
+                            style="font-size: 2rem; color: var(--primary); margin-bottom: 1rem;"></i>
                         <p>"Los precios están siempre a la vista y la medida es exacta. 100% recomendados."</p>
                         <div class="client-info" style="margin-top: 1rem;">
                             <strong style="color: var(--primary);">Carlos H.</strong>
@@ -596,7 +636,9 @@
                             <option value="custom">Otro (Ingresar KM)</option>
                         </select>
                         <div id="custom-km-group">
-                            <label style="font-size: 0.7rem; color: var(--primary); margin-top: 0.5rem; display: block;">Ingresa los KM de tu viaje:</label>
+                            <label
+                                style="font-size: 0.7rem; color: var(--primary); margin-top: 0.5rem; display: block;">Ingresa
+                                los KM de tu viaje:</label>
                             <input type="number" id="custom-km" placeholder="Ej: 150" min="1">
                         </div>
                     </div>
@@ -622,7 +664,8 @@
                         <span class="result-unit">Soles</span>
                     </div>
                 </div>
-                <p style="font-size: 0.7rem; color: var(--text-dim); text-align: center; margin-top: 1rem;">*Cálculo referencial basado en promedios de consumo y precios actuales.</p>
+                <p style="font-size: 0.7rem; color: var(--text-dim); text-align: center; margin-top: 1rem;">*Cálculo
+                    referencial basado en promedios de consumo y precios actuales.</p>
             </div>
         </section>
 
@@ -657,11 +700,12 @@
                     <p><i class="fas fa-envelope"></i> elyprimax@gmail.com</p>
                     <p><i class="fas fa-id-card"></i> RUC: 20568647417</p>
                     <div class="social-links" style="margin-top: 1rem;">
-                        <a href="https://www.facebook.com/share/1SmZtY4T42/" target="_blank" aria-label="Síguenos en Facebook"><i
-                                class="fab fa-facebook"></i></a>
+                        <a href="https://www.facebook.com/share/1SmZtY4T42/" target="_blank"
+                            aria-label="Síguenos en Facebook"><i class="fab fa-facebook"></i></a>
                         <a href="https://www.instagram.com/est_petrox_san_sebastian_hyo?igsh=MWlkM2JyZW1tazg5dQ=="
                             target="_blank" aria-label="Síguenos en Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.link/5iihkf" target="_blank" aria-label="Contáctanos por WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://wa.link/5iihkf" target="_blank" aria-label="Contáctanos por WhatsApp"><i
+                                class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
             </div>
@@ -681,27 +725,36 @@
         <div class="modal-content">
             <span class="close-modal" onclick="closeBillingModal()">&times;</span>
             <h3 style="color: var(--primary); margin-bottom: 0.5rem; font-size: 1.5rem;">Factura Electrónica</h3>
-            <p style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 1.5rem;">Completa los datos para enviarte el comprobante.</p>
+            <p style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 1.5rem;">Completa los datos para
+                enviarte el comprobante.</p>
             <form action="https://formsubmit.co/elyprimax@gmail.com" method="POST" id="billingForm">
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_subject" value="Nueva Solicitud de Factura - Web">
                 <div class="form-group" style="margin-bottom: 1rem;">
-                    <input type="text" name="ruc" placeholder="RUC (11 dígitos)" required class="calc-input" style="width: 100%; background: rgba(255,255,255,0.05); color: white; border: 1px solid var(--glass-border); padding: 1rem; border-radius: 12px; outline: none;">
+                    <input type="text" name="ruc" placeholder="RUC (11 dígitos)" required class="calc-input"
+                        style="width: 100%; background: rgba(255,255,255,0.05); color: white; border: 1px solid var(--glass-border); padding: 1rem; border-radius: 12px; outline: none;">
                 </div>
                 <div class="form-group" style="margin-bottom: 1rem;">
-                    <input type="text" name="razon_social" placeholder="Razón Social" required class="calc-input" style="width: 100%; background: rgba(255,255,255,0.05); color: white; border: 1px solid var(--glass-border); padding: 1rem; border-radius: 12px; outline: none;">
+                    <input type="text" name="razon_social" placeholder="Razón Social" required class="calc-input"
+                        style="width: 100%; background: rgba(255,255,255,0.05); color: white; border: 1px solid var(--glass-border); padding: 1rem; border-radius: 12px; outline: none;">
                 </div>
                 <div class="form-group" style="margin-bottom: 1rem;">
-                    <input type="text" name="placa_monto" placeholder="Placa del Vehículo y Monto Exacto" required class="calc-input" style="width: 100%; background: rgba(255,255,255,0.05); color: white; border: 1px solid var(--glass-border); padding: 1rem; border-radius: 12px; outline: none;">
+                    <input type="text" name="placa_monto" placeholder="Placa del Vehículo y Monto Exacto" required
+                        class="calc-input"
+                        style="width: 100%; background: rgba(255,255,255,0.05); color: white; border: 1px solid var(--glass-border); padding: 1rem; border-radius: 12px; outline: none;">
                 </div>
-                <button type="submit" class="btn-primary" style="width: 100%; border: none; cursor: pointer; margin-top: 0.5rem;">Enviar Solicitud</button>
+                <button type="submit" class="btn-primary"
+                    style="width: 100%; border: none; cursor: pointer; margin-top: 0.5rem;">Enviar Solicitud</button>
             </form>
-            <div id="billingStatus" style="display: none; padding: 1rem; border-radius: 12px; text-align: center; font-weight: 600; margin-top: 1rem;"></div>
+            <div id="billingStatus"
+                style="display: none; padding: 1rem; border-radius: 12px; text-align: center; font-weight: 600; margin-top: 1rem;">
+            </div>
         </div>
     </div>
 
     <!-- BOTÓN VOLVER ARRIBA -->
-    <a href="#hero" id="back-to-top" aria-label="Volver arriba" style="position: fixed; bottom: 6rem; right: 2rem; width: 45px; height: 45px; background: var(--glass-bg); border: 1px solid var(--glass-border); color: var(--primary); border-radius: 50%; display: none; align-items: center; justify-content: center; font-size: 1.2rem; z-index: 999; backdrop-filter: blur(10px); transition: var(--transition);">
+    <a href="#hero" id="back-to-top" aria-label="Volver arriba"
+        style="position: fixed; bottom: 6rem; right: 2rem; width: 45px; height: 45px; background: var(--glass-bg); border: 1px solid var(--glass-border); color: var(--primary); border-radius: 50%; display: none; align-items: center; justify-content: center; font-size: 1.2rem; z-index: 999; backdrop-filter: blur(10px); transition: var(--transition);">
         <i class="fas fa-chevron-up"></i>
     </a>
 
@@ -716,16 +769,20 @@
                 </div>
             </div>
             <div class="wa-options">
-                <a href="https://wa.me/51964177728?text=Hola,%20deseo%20solicitar%20una%20factura." target="_blank" class="wa-option">
+                <a href="https://wa.me/51964424982?text=Hola,%20deseo%20solicitar%20una%20factura." target="_blank"
+                    class="wa-option">
                     <i class="fas fa-file-invoice"></i> Solicitar Factura
                 </a>
-                <a href="https://wa.me/51964177728?text=Hola,%20quisiera%20saber%20los%20precios%20de%20combustible%20de%20hoy." target="_blank" class="wa-option">
+                <a href="https://wa.me/51964424982?text=Hola,%20quisiera%20saber%20los%20precios%20de%20combustible%20de%20hoy."
+                    target="_blank" class="wa-option">
                     <i class="fas fa-gas-pump"></i> Ver Precios de Hoy
                 </a>
-                <a href="https://wa.me/51964177728?text=Hola,%20quisiera%20más%20información%20sobre%20convenios%20de%20flotas." target="_blank" class="wa-option">
+                <a href="https://wa.me/51964424982?text=Hola,%20quisiera%20más%20información%20sobre%20convenios%20de%20flotas."
+                    target="_blank" class="wa-option">
                     <i class="fas fa-truck-moving"></i> Convenios de Flotas
                 </a>
-                <a href="https://wa.me/51964177728?text=Hola,%20tengo%20una%20consulta." target="_blank" class="wa-option wa-primary">
+                <a href="https://wa.me/51964424982?text=Hola,%20tengo%20una%20consulta." target="_blank"
+                    class="wa-option wa-primary">
                     <i class="fab fa-whatsapp"></i> Hablar con Asesor
                 </a>
             </div>
