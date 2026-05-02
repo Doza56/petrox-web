@@ -39,7 +39,7 @@
         <div class="hamburger" id="hamburger" aria-label="Abrir menú de navegación" role="button" tabindex="0">
             <i class="fas fa-bars"></i>
         </div>
-        <a href="https://wa.link/5iihkf" target="_blank" class="btn-primary"
+        <a href="https://wa.me/51964424982?text=Hola,%20quisiera%20más%20información." target="_blank" class="btn-primary"
             style="padding: 0.6rem 1.5rem; font-size: 0.9rem;">WhatsApp</a>
     </header>
 
@@ -137,10 +137,40 @@
         </div>
     </footer>
 
-    <!-- WHATSAPP -->
-    <a href="https://wa.link/5iihkf" target="_blank" class="whatsapp-float" aria-label="Chatear por WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <!-- 14. CHATBOT WHATSAPP INTELIGENTE -->
+    <div id="whatsapp-widget" class="wa-widget">
+        <div id="wa-menu" class="wa-menu">
+            <div class="wa-header">
+                <img src="img/logo.png" alt="Petrox Logo">
+                <div class="wa-header-text">
+                    <strong>Petrox San Sebastián</strong>
+                    <span>¿En qué podemos ayudarte?</span>
+                </div>
+            </div>
+            <div class="wa-options">
+                <a href="https://wa.me/51964424982?text=Hola,%20deseo%20solicitar%20una%20factura." target="_blank"
+                    class="wa-option">
+                    <i class="fas fa-file-invoice"></i> Solicitar Factura
+                </a>
+                <a href="https://wa.me/51964424982?text=Hola,%20quisiera%20saber%20los%20precios%20de%20combustible%20de%20hoy."
+                    target="_blank" class="wa-option">
+                    <i class="fas fa-gas-pump"></i> Ver Precios de Hoy
+                </a>
+                <a href="https://wa.me/51964424982?text=Hola,%20quisiera%20más%20información%20sobre%20convenios%20de%20flotas."
+                    target="_blank" class="wa-option">
+                    <i class="fas fa-truck-moving"></i> Convenios de Flotas
+                </a>
+                <a href="https://wa.me/51964424982?text=Hola,%20tengo%20una%20consulta." target="_blank"
+                    class="wa-option wa-primary">
+                    <i class="fab fa-whatsapp"></i> Hablar con Asesor
+                </a>
+            </div>
+        </div>
+        <button id="wa-toggle" class="wa-btn">
+            <i class="fab fa-whatsapp"></i>
+            <span class="wa-badge">1</span>
+        </button>
+    </div>
 
     <script src="script.js"></script>
 </body>
