@@ -71,14 +71,28 @@ a {
     position: fixed;
     top: 0;
     width: 100%;
-    padding: 1.5rem 5%;
+    padding: 1.2rem 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background: var(--glass-bg);
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(15px);
     border-bottom: 1px solid var(--glass-border);
     z-index: 1000;
+}
+
+#header nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.2rem;
+    list-style: none;
+    align-items: center;
 }
 
 .logo img {
@@ -634,6 +648,12 @@ a {
 
     #header {
         padding: 1rem 5%;
+        justify-content: space-between;
+    }
+
+    #header nav {
+        position: static;
+        transform: none;
     }
 
     .hamburger {
