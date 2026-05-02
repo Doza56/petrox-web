@@ -516,18 +516,28 @@ async function fetchNews() {
         if (data.status === 'ok') {
             container.innerHTML = ''; 
             
-            data.items.slice(0, 3).forEach(item => {
+            // Imágenes de respaldo variadas sobre combustibles y energía
+            const fallbackImages = [
+                'https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&q=80&w=1000', // Manguera combustible
+                'https://images.unsplash.com/photo-1620067634310-998822538198?auto=format&fit=crop&q=80&w=1000', // Refinería
+                'https://images.unsplash.com/photo-1542281286-9e0a16bb7366?auto=format&fit=crop&q=80&w=1000', // Carretera/Ciudad
+                'https://images.unsplash.com/photo-1559441115-46729517b686?auto=format&fit=crop&q=80&w=1000', // Gasolinera noche
+                'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=1000'  // Petróleo
+            ];
+
+            data.items.slice(0, 3).forEach((item, index) => {
                 const date = new Date(item.pubDate).toLocaleDateString('es-ES', {
                     day: '2-digit',
                     month: 'short',
                     year: 'numeric'
                 });
 
-                const thumbnail = item.thumbnail || 'https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&q=80&w=1000';
+                // Si no hay thumbnail, usamos una de nuestra lista rotativa
+                const thumbnail = item.thumbnail || fallbackImages[index % fallbackImages.length];
 
                 const card = `
                     <article class="news-card">
-                        <img src="${thumbnail}" alt="${item.title}" class="news-img" onerror="this.src='https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&q=80&w=1000'">
+                        <img src="${thumbnail}" alt="${item.title}" class="news-img" onerror="this.src='${fallbackImages[index % fallbackImages.length]}'">
                         <div class="news-body">
                             <span class="news-date">${date}</span>
                             <h3>${item.title}</h3>
