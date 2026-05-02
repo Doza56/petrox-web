@@ -10,26 +10,41 @@ ESTACIÓN DE SERVICIOS PETROX "SAN SEBASTIAN" - HOJA DE ESTILOS
    1. VARIABLES Y CONFIGURACIÓN GLOBAL
    ---------------------------------------------------------------- */
 :root {
-    --primary: #ff5f00;
-    /* Naranja Primax PRINCIPAL */
-    --primary-hover: #e65600;
-    /* Naranja más oscuro para hover */
-    --bg-dark: #0a0a0b;
-    /* Fondo oscuro de la web */
-    --bg-card: rgba(255, 255, 255, 0.03);
-    /* Fondo de tarjetas */
-    --glass-bg: rgba(15, 15, 18, 0.7);
-    /* Efecto cristal */
-    --glass-border: rgba(255, 255, 255, 0.1);
-    /* Bordes sutiles */
-    --text-main: #f8fafc;
-    /* Color de texto principal */
-    --text-dim: #94a3b8;
-    /* Color de texto secundario */
-    --accent: #38bdf8;
-    /* Color de acento azul */
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    /* Animación suave */
+    --primary: #ff5f00; /* Naranja Primax PRINCIPAL */
+    --primary-hover: #e65600; /* Naranja más oscuro para hover */
+    --bg-dark: #0a0a0b; /* Fondo oscuro de la web */
+    --bg-card: rgba(255, 255, 255, 0.03); /* Fondo de tarjetas */
+    --glass-bg: rgba(15, 15, 18, 0.7); /* Efecto cristal */
+    --glass-border: rgba(255, 255, 255, 0.1); /* Bordes sutiles */
+    --text-main: #f8fafc; /* Color de texto principal */
+    --text-dim: #94a3b8; /* Color de texto secundario */
+    --accent: #38bdf8; /* Color de acento azul */
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Animación suave */
+    --day-gradient: linear-gradient(135deg, #0a0a0b 0%, #050505 100%);
+}
+
+/* --- TEMAS DINÁMICOS --- */
+body[data-time="morning"] {
+    --bg-dark: #0a0f1a;
+    --day-gradient: linear-gradient(135deg, #0a0f1a 0%, #1a2a4a 100%);
+    --glass-border: rgba(56, 189, 248, 0.15);
+}
+
+body[data-time="day"] {
+    --bg-dark: #050505;
+    --day-gradient: linear-gradient(135deg, #050505 0%, #111 100%);
+}
+
+body[data-time="sunset"] {
+    --bg-dark: #0f0a05;
+    --day-gradient: linear-gradient(135deg, #0f0a05 0%, #2a1a0a 100%);
+    --primary: #ff7b00;
+    --glass-border: rgba(255, 123, 0, 0.2);
+}
+
+body[data-time="night"] {
+    --bg-dark: #020203;
+    --day-gradient: radial-gradient(circle at center, #0a0a0b 0%, #020203 100%);
 }
 
 * {
@@ -45,9 +60,12 @@ html {
 
 body {
     background-color: var(--bg-dark);
+    background-image: var(--day-gradient);
     color: var(--text-main);
     overflow-x: hidden;
     line-height: 1.6;
+    transition: background-color 2s ease, background-image 2s ease;
+    min-height: 100vh;
 }
 
 h1,

@@ -223,11 +223,11 @@ function updateCalculator() {
     calcGallons.textContent = (money / price).toFixed(2);
 }
 
-const calcFuel = document.getElementById('calc-fuel');
-const calcMoney = document.getElementById('calc-money');
-if (calcFuel && calcMoney) {
-    calcFuel.addEventListener('change', updateCalculator);
-    calcMoney.addEventListener('input', updateCalculator);
+const calcFuelSelector = document.getElementById('calc-fuel');
+const calcMoneyInput = document.getElementById('calc-money');
+if (calcFuelSelector && calcMoneyInput) {
+    calcFuelSelector.addEventListener('change', updateCalculator);
+    calcMoneyInput.addEventListener('input', updateCalculator);
 }
 
 // 11. TOAST DE BIENVENIDA
@@ -256,6 +256,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupBackToTop();
     setupRouteCalculator();
     setupWhatsAppWidget();
+    setupDynamicTheme();
     fetchNews();
     setTimeout(showWelcomeToast, 2000);
     setTimeout(removePreloader, 4000); // Seguro de 4 segundos
@@ -275,8 +276,8 @@ function moveCarousel(index) {
     dots[currentSlide].classList.add('active');
 }
 
-const track = document.getElementById('testimonial-track');
-if (track) {
+const testimonialTrack = document.getElementById('testimonial-track');
+if (testimonialTrack) {
     setInterval(() => {
         const dots = document.querySelectorAll('.carousel-dots .dot');
         if (dots.length > 0) moveCarousel((currentSlide + 1) % dots.length);
@@ -421,4 +422,29 @@ function setupBackToTop() {
     window.addEventListener('scroll', () => {
         btn.style.display = window.scrollY > 500 ? 'flex' : 'none';
     });
+}
+
+// 19. TEMA DINÁMICO POR HORA
+function setupDynamicTheme() {
+    const updateTheme = () => {
+        const hour = new Date().getHours();
+        let timeLabel = 'night';
+
+        if (hour >= 6 && hour < 10) {
+            timeLabel = 'morning';
+        } else if (hour >= 10 && hour < 17) {
+            timeLabel = 'day';
+        } else if (hour >= 17 && hour < 20) {
+            timeLabel = 'sunset';
+        } else {
+            timeLabel = 'night';
+        }
+
+        document.body.setAttribute('data-time', timeLabel);
+        console.log(`🌅 Tema actualizado: ${timeLabel} (${hour}h)`);
+    };
+
+    updateTheme();
+    // Revisar cada 15 minutos para actualizar si cambia el horario
+    setInterval(updateTheme, 15 * 60 * 1000);
 }
