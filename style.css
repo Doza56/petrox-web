@@ -1065,19 +1065,21 @@ a {
 }
 
 .totem-brand {
-    font-size: 2rem;
+    font-size: 2.2rem;
     font-weight: 800;
-    color: #003893; /* Azul Primax */
+    color: #003893;
     letter-spacing: 2px;
     margin-top: 5px;
-    text-shadow: 0 0 10px rgba(0, 56, 147, 0.3);
+    text-shadow: 0 0 15px rgba(0, 56, 147, 0.5), 0 0 5px rgba(255, 255, 255, 0.3);
 }
 
 .totem-slogan {
-    font-size: 0.7rem;
-    color: var(--text-dim);
+    font-size: 0.8rem;
+    color: white;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    font-weight: 600;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
 }
 
 .totem-body {
