@@ -133,6 +133,13 @@ a {
     display: inline-block;
 }
 
+.dropbtn {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Espacio entre el texto y la flecha */
+    white-space: nowrap; /* Evita que se rompa en dos líneas */
+}
+
 .dropdown-content {
     display: none;
     position: absolute;
