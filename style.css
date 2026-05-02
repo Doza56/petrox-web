@@ -25,26 +25,29 @@ ESTACIÓN DE SERVICIOS PETROX "SAN SEBASTIAN" - HOJA DE ESTILOS
 
 /* --- TEMAS DINÁMICOS --- */
 body[data-time="morning"] {
-    --bg-dark: #0a0f1a;
-    --day-gradient: linear-gradient(135deg, #0a0f1a 0%, #1a2a4a 100%);
-    --glass-border: rgba(56, 189, 248, 0.15);
+    --bg-dark: #0f172a; /* Azul noche aclarando */
+    --day-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    --primary: #fb923c; /* Naranja más suave */
+    --glass-border: rgba(56, 189, 248, 0.2);
 }
 
 body[data-time="day"] {
-    --bg-dark: #050505;
+    --bg-dark: #050505; /* Negro profundo */
     --day-gradient: linear-gradient(135deg, #050505 0%, #111 100%);
+    --primary: #ff5f00; /* Naranja estándar */
 }
 
 body[data-time="sunset"] {
-    --bg-dark: #0f0a05;
-    --day-gradient: linear-gradient(135deg, #0f0a05 0%, #2a1a0a 100%);
-    --primary: #ff7b00;
-    --glass-border: rgba(255, 123, 0, 0.2);
+    --bg-dark: #1c0a00; /* Marrón/Negro muy cálido */
+    --day-gradient: linear-gradient(135deg, #1c0a00 0%, #451a03 100%);
+    --primary: #ff8c00; /* Naranja fuego */
+    --glass-border: rgba(255, 140, 0, 0.4);
 }
 
 body[data-time="night"] {
-    --bg-dark: #020203;
-    --day-gradient: radial-gradient(circle at center, #0a0a0b 0%, #020203 100%);
+    --bg-dark: #020203; /* Casi negro total */
+    --day-gradient: radial-gradient(circle at 50% 50%, #0f172a 0%, #020203 100%);
+    --primary: #ff4500; /* Naranja neón */
 }
 
 * {

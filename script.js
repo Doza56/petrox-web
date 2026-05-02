@@ -432,9 +432,9 @@ function setupDynamicTheme() {
 
         if (hour >= 6 && hour < 10) {
             timeLabel = 'morning';
-        } else if (hour >= 10 && hour < 17) {
+        } else if (hour >= 10 && hour < 16) {
             timeLabel = 'day';
-        } else if (hour >= 17 && hour < 20) {
+        } else if (hour >= 16 && hour < 20) {
             timeLabel = 'sunset';
         } else {
             timeLabel = 'night';
