@@ -564,4 +564,54 @@ async function fetchNews() {
 document.addEventListener('DOMContentLoaded', () => {
     setupBackToTop();
     fetchNews();
+    setupRouteCalculator();
+    setupWhatsAppWidget();
 });
+
+// 17. LÓGICA DE LA CALCULADORA DE RUTA
+function setupRouteCalculator() {
+    const destSelect = document.getElementById('route-destination');
+    const vehicleSelect = document.getElementById('route-vehicle');
+    const gallonsDisplay = document.getElementById('route-gallons');
+    const costDisplay = document.getElementById('route-cost');
+
+    if (!destSelect || !vehicleSelect) return;
+
+    function updateRouteCalc() {
+        const distance = parseFloat(destSelect.value);
+        const efficiency = parseFloat(vehicleSelect.value);
+        const price = window.fuelPrices.regular; // Usamos el precio de Regular por defecto
+
+        const gallonsNeeded = (distance / efficiency).toFixed(2);
+        const totalCost = (gallonsNeeded * price).toFixed(2);
+
+        gallonsDisplay.textContent = gallonsNeeded;
+        costDisplay.textContent = `S/ ${totalCost}`;
+    }
+
+    destSelect.addEventListener('change', updateRouteCalc);
+    vehicleSelect.addEventListener('change', updateRouteCalc);
+    
+    // Inicializar
+    updateRouteCalc();
+}
+
+// 18. LÓGICA DEL CHATBOT DE WHATSAPP
+function setupWhatsAppWidget() {
+    const waToggle = document.getElementById('wa-toggle');
+    const waMenu = document.getElementById('wa-menu');
+
+    if (waToggle && waMenu) {
+        waToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            waMenu.classList.toggle('active');
+        });
+
+        // Cerrar al hacer clic fuera
+        document.addEventListener('click', (e) => {
+            if (!waMenu.contains(e.target) && !waToggle.contains(e.target)) {
+                waMenu.classList.remove('active');
+            }
+        });
+    }
+}

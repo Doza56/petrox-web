@@ -1288,4 +1288,239 @@ a {
 
 .news-card:hover .news-link i {
     transform: translateX(5px);
-}
+}
+
+/* ----------------------------------------------------------------
+   21. CALCULADORA DE RUTA (DISEÑO)
+   ---------------------------------------------------------------- */
+.calculator-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 3rem;
+}
+
+.calc-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.calc-group label {
+    display: block;
+    margin-bottom: 0.8rem;
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+.calc-group select {
+    width: 100%;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    color: white;
+    cursor: pointer;
+}
+
+.calc-result-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    background: rgba(255, 95, 0, 0.1);
+    border: 1px dashed var(--primary);
+    padding: 2rem;
+    border-radius: 20px;
+}
+
+.result-item {
+    text-align: center;
+}
+
+.result-label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    margin-bottom: 0.5rem;
+}
+
+.result-value {
+    display: block;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.8rem;
+    color: var(--primary);
+}
+
+.result-unit {
+    font-size: 0.7rem;
+    color: white;
+    text-transform: uppercase;
+}
+
+/* ----------------------------------------------------------------
+   22. GALERÍA MOMENTOS PETROX
+   ---------------------------------------------------------------- */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.gallery-item {
+    height: 250px;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+/* ----------------------------------------------------------------
+   23. CHATBOT WHATSAPP
+   ---------------------------------------------------------------- */
+.wa-widget {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 1000;
+}
+
+.wa-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #25d366;
+    color: white;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.wa-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #ff3b30;
+    color: white;
+    font-size: 0.7rem;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.wa-menu {
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    width: 320px;
+    background: white;
+    border-radius: 25px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    overflow: hidden;
+    transform: translateY(20px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.wa-menu.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+.wa-header {
+    background: #075e54;
+    padding: 1.5rem;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.wa-header img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: white;
+    padding: 5px;
+}
+
+.wa-header-text strong {
+    display: block;
+    font-size: 0.9rem;
+}
+
+.wa-header-text span {
+    font-size: 0.75rem;
+    opacity: 0.8;
+}
+
+.wa-options {
+    padding: 1rem;
+    background: #f0f0f0;
+}
+
+.wa-option {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: white;
+    margin-bottom: 0.8rem;
+    border-radius: 15px;
+    text-decoration: none;
+    color: #333;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.wa-option i {
+    color: #075e54;
+    font-size: 1.1rem;
+}
+
+.wa-option:hover {
+    transform: scale(1.03);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.wa-option.wa-primary {
+    background: #25d366;
+    color: white;
+}
+
+.wa-option.wa-primary i {
+    color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .calc-row, .calc-result-box {
+        grid-template-columns: 1fr;
+    }
+    .wa-menu {
+        width: 280px;
+        right: -10px;
+    }
+}
+
