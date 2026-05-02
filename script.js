@@ -500,6 +500,58 @@ function setupBackToTop() {
     }
 }
 
+// 16. FEED AUTOMÁTICO DE NOTICIAS
+async function fetchNews() {
+    const container = document.getElementById('news-container');
+    if (!container) return;
+
+    // Buscamos noticias sobre combustibles en Perú usando Google News RSS
+    const rssUrl = 'https://news.google.com/rss/search?q=combustibles+peru+petroleo&hl=es-419&gl=PE&ceid=PE:es-419';
+    const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
+
+    try {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+
+        if (data.status === 'ok') {
+            container.innerHTML = ''; 
+            
+            data.items.slice(0, 3).forEach(item => {
+                const date = new Date(item.pubDate).toLocaleDateString('es-ES', {
+                    day: '2-digit',
+                    month: 'short',
+                    year: 'numeric'
+                });
+
+                const thumbnail = item.thumbnail || 'https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&q=80&w=1000';
+
+                const card = `
+                    <article class="news-card">
+                        <img src="${thumbnail}" alt="${item.title}" class="news-img" onerror="this.src='https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&q=80&w=1000'">
+                        <div class="news-body">
+                            <span class="news-date">${date}</span>
+                            <h3>${item.title}</h3>
+                            <p>${item.description.replace(/<[^>]*>?/gm, '').substring(0, 150)}...</p>
+                            <a href="${item.link}" target="_blank" class="news-link">Leer noticia completa <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                `;
+                container.innerHTML += card;
+            });
+        } else {
+            throw new Error('No se pudieron cargar las noticias');
+        }
+    } catch (error) {
+        container.innerHTML = `
+            <div style="grid-column: 1/-1; text-align: center; color: var(--text-dim);">
+                <p>No pudimos cargar las noticias automáticamente en este momento.</p>
+                <a href="https://www.google.com/search?q=combustibles+peru+noticias" target="_blank" class="btn-primary" style="margin-top: 1rem; display: inline-block;">Ver noticias en Google</a>
+            </div>
+        `;
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     setupBackToTop();
+    fetchNews();
 });
