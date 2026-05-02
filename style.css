@@ -1094,8 +1094,15 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid rgba(255, 95, 0, 0.1);
-    box-shadow: inset 0 0 10px rgba(255, 95, 0, 0.05);
+    border: 1px solid rgba(255, 95, 0, 0.6);
+    box-shadow: 0 0 12px rgba(255, 95, 0, 0.3), inset 0 0 8px rgba(255, 95, 0, 0.1);
+    margin-bottom: 5px;
+    transition: var(--transition);
+}
+
+.totem-price-row:hover {
+    border-color: #fff;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4), inset 0 0 10px rgba(255, 95, 0, 0.2);
 }
 
 .totem-fuel-info {
